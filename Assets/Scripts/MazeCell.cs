@@ -30,6 +30,11 @@ public class MazeCell : MonoBehaviour
     public void ClearRightWall() => _rightWall.SetActive(false);
     public void ClearFrontWall() => _frontWall.SetActive(false);
     public void ClearBackWall() => _backWall.SetActive(false);
+
+    public bool HasLeftWall() => _leftWall.activeSelf;
+    public bool HasRightWall() => _rightWall.activeSelf;
+    public bool HasFrontWall() => _frontWall.activeSelf;
+    public bool HasBackWall() => _backWall.activeSelf;
 }
 
 //using UnityEngine;

@@ -555,6 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226996007}
   - component: {fileID: 1226996006}
+  - component: {fileID: 1226996008}
   m_Layer: 0
   m_Name: Maze Generator
   m_TagString: Untagged
@@ -580,6 +581,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 4078585674686211419, guid: d1e7b74ce005e4b2abbc6ed2d13571b5, type: 3}
   _wrongPathBias: 0
   _cellSize: 3
+  _intersectionDetector: {fileID: 1226996008}
 --- !u!4 &1226996007
 Transform:
   m_ObjectHideFlags: 0
@@ -595,6 +597,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1226996008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226996005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efbc07a3dfff4a0087f7ee7e904ed61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntersectionDetector
+  _greenArrowPrefab: {fileID: 8262014378134286002, guid: f1b5a38a8b47648bfb27153ef5a510de, type: 3}
+  _redCrossPrefab: {fileID: 4193981978080468497, guid: 59c08e52f243346dda136c4e76e712f7, type: 3}
+  _indicatorHeight: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
