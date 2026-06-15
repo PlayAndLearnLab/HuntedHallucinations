@@ -10,14 +10,15 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private int _mazeDepth;
     [SerializeField] private GameObject _playerPrefab;
 
-    [Range(0f, 1f)]
-    [SerializeField] private float _wrongPathBias = 0.7f;
+    [Range(0f, 1f)] [SerializeField] private float _wrongPathBias = 0.7f;
 
     [SerializeField] private float _cellSize = 2f;
 
     private MazeCell[,] _mazeGrid;
     private int[,] _distanceFromExit;
     private Vector2Int _exitCoord;
+
+    [SerializeField] private IntersectionDetector _intersectionDetector;
 
     IEnumerator Start()
     {
@@ -49,6 +50,9 @@ public class MazeGenerator : MonoBehaviour
 
         Vector3 startPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
         Instantiate(_playerPrefab, startPosition, Quaternion.identity);
+
+        if (_intersectionDetector != null)
+            _intersectionDetector.OnMazeReady(_mazeGrid, _mazeWidth, _mazeDepth, _distanceFromExit, _cellSize);
     }
 
     private void ComputeDistancesFromExit()
