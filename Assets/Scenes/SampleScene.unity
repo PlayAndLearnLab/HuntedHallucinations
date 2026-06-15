@@ -580,7 +580,7 @@ MonoBehaviour:
   _mazeDepth: 10
   _playerPrefab: {fileID: 4078585674686211419, guid: d1e7b74ce005e4b2abbc6ed2d13571b5, type: 3}
   _wrongPathBias: 0
-  _cellSize: 3
+  _cellSize: 5
   _intersectionDetector: {fileID: 1226996008}
 --- !u!4 &1226996007
 Transform:
