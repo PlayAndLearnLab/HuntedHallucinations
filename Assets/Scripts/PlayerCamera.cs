@@ -29,6 +29,8 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
+        if (Cursor.lockState != CursorLockMode.Locked) return;
+        
         float mouseX = Mouse.current.delta.x.ReadValue() * _mouseSensitivity * Time.deltaTime;
         float mouseY = Mouse.current.delta.y.ReadValue() * _mouseSensitivity * Time.deltaTime;
 
@@ -87,6 +89,12 @@ public class PlayerCamera : MonoBehaviour
         }
 
         return safeDistance;
+    }
+
+    public static void SetCursorFree(bool free)
+    {
+        Cursor.lockState = free ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = free;
     }
 
     // Returns the 4 corners of the camera's near clip plane at the candidate position

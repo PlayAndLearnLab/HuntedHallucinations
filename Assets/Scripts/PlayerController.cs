@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     private Transform _cameraTransform;
     private float _verticalVelocity;
+    private bool _canMove = true;
 
     void Awake()
     {
@@ -19,8 +20,24 @@ public class PlayerController : MonoBehaviour
         _cameraTransform = GetComponentInChildren<Camera>().transform;
     }
 
+    public void ToggleMovement(bool canMove)
+    {
+        _canMove = canMove;
+        if (!_canMove)
+        {
+            _verticalVelocity = 0f; // Reset gravity while paused
+        }
+    }
+
+    public static void SetCursorFree_fromCamera(bool free)
+    {
+        PlayerCamera.SetCursorFree(free);
+    }
+
     void Update()
     {
+        if (!_canMove) return;
+
         Vector2 input = Vector2.zero;
 
         if (Keyboard.current != null)
