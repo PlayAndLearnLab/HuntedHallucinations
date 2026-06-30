@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4c45f1e2d022c3043829e106b85caf33
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302606
+  packageName: Stylize Mansion
+  packageVersion: 1.0
+  assetPath: Assets/LowPolyBoy/StylzeMansion/DemoScene/New Universal Render Pipeline
+    Asset_Renderer.asset
+  uploadId: 710773

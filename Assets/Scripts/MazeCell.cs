@@ -26,6 +26,25 @@ public class MazeCell : MonoBehaviour
         _unvisitedBlock.SetActive(false);
     }
 
+    public void DebugWalls()
+    {
+        Debug.Log($"Cell [{GridX},{GridZ}] — " +
+            $"Left:{_leftWall.activeSelf} " +
+            $"Right:{_rightWall.activeSelf} " +
+            $"Front:{_frontWall.activeSelf} " +
+            $"Back:{_backWall.activeSelf}");
+    }
+
+    public void HighlightPath(Color color)
+    {
+        // Finds the Renderer on the floor child object or the main cell
+        Renderer renderer = GetComponentInChildren<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = color;
+        }
+    }
+
     public void ClearLeftWall() => _leftWall.SetActive(false);
     public void ClearRightWall() => _rightWall.SetActive(false);
     public void ClearFrontWall() => _frontWall.SetActive(false);
