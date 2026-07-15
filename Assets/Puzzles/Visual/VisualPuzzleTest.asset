@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98c5fa8e15564f559794f3d022dd488, type: 3}
+  m_Name: VisualPuzzleTest
+  m_EditorClassIdentifier: Assembly-CSharp::VisualPuzzleData
+  difficulty: 0
+  puzzleType: 0
+  correctPrefab: {fileID: 8446578424103497645, guid: 60ff01b22b043ba4fa7898a0f4b7d2e7, type: 3}
+  hallucinatedPrefabs:
+  - {fileID: 7100449587868882277, guid: 36baa622ed2ea6045b5a126cb6a737cd, type: 3}
+  - {fileID: 3280009003184811206, guid: 005ca93937b160c4a8f6436a0c10f62b, type: 3}

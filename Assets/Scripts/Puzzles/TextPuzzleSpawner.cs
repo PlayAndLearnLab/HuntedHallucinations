@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public class TextPuzzleSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _textLabelPrefab; // prefab with a TextMeshPro component
+    [SerializeField] private GameObject _textLabelPrefab;
+
+    private List<GameObject> _labels = new List<GameObject>();
+    private string _puzzleHint;
 
     public void Setup(
         TextPuzzleData data,
@@ -15,6 +18,8 @@ public class TextPuzzleSpawner : MonoBehaviour
         float cellDepth,
         float labelHeight)
     {
+        _puzzleHint = data.playerHint;
+
         var falsePool = new List<string>(data.falseStatements);
         Shuffle(falsePool);
         int falseIndex = 0;
@@ -35,7 +40,20 @@ public class TextPuzzleSpawner : MonoBehaviour
             GameObject label = Instantiate(_textLabelPrefab, labelPos, rot, transform);
             TextMeshPro tmp = label.GetComponentInChildren<TextMeshPro>();
             if (tmp != null) tmp.text = statement;
+
+            label.SetActive(false); // start invisible
+            _labels.Add(label);
+
+
         }
+    }
+
+    public void Reveal()
+    {
+        foreach (var label in _labels)
+            label.SetActive(true);
+
+        PuzzleUI.Instance.ShowPuzzlePopup(_puzzleHint);
     }
 
     private void Shuffle<T>(List<T> list)

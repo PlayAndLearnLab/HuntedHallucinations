@@ -663,6 +663,95 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &416988661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 416988663}
+  - component: {fileID: 416988662}
+  m_Layer: 0
+  m_Name: TextPuzzleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &416988662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416988661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7894e6d8f9ef24e989aa212d873d7462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextPuzzleSpawner
+  _textLabelPrefab: {fileID: 6137560650013281426, guid: a9dc73750fbce44e191bb8538ee5ab5d, type: 3}
+--- !u!4 &416988663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416988661}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.70962, y: 0, z: 67.68354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &549843481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 549843483}
+  - component: {fileID: 549843482}
+  m_Layer: 0
+  m_Name: VisualPuzzleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &549843482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549843481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340d2507a378c4fd0ab76a5f37f34073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisualPuzzleSpawner
+--- !u!4 &549843483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549843481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.70962, y: 0, z: 67.68354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641939948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,11 +1187,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efbc07a3dfff4a0087f7ee7e904ed61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntersectionDetector
-  _greenArrowPrefab: {fileID: 8262014378134286002, guid: f1b5a38a8b47648bfb27153ef5a510de, type: 3}
-  _redCrossPrefab: {fileID: 4193981978080468497, guid: 59c08e52f243346dda136c4e76e712f7, type: 3}
-  _indicatorHeight: 1.5
+  _visualPuzzleSpawnerPrefab: {fileID: 549843481}
+  _textPuzzleSpawnerPrefab: {fileID: 416988661}
   _wrongPathTriggerPrefab: {fileID: 4139059498128306681, guid: 626fdc379fce04af08a237db989b37c4, type: 3}
   _intersectionZonePrefab: {fileID: 4236203764946478203, guid: 625dcc01ee62a4453a61997264ea349d, type: 3}
+  _labelHeight: 1.5
+--- !u!1 &1317028214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317028216}
+  - component: {fileID: 1317028215}
+  m_Layer: 0
+  m_Name: PuzzleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1317028215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317028214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6166e04c66b4e72bc6e95b745bb10e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  _visualPuzzles:
+  - {fileID: 11400000, guid: bb0ed478ca1a848328c3bc42f743d4cb, type: 2}
+  _textPuzzles:
+  - {fileID: 11400000, guid: 1d539f22348d34a9a90f01d6340ccc39, type: 2}
+  _difficultySettings: {fileID: 11400000, guid: adb56ef6d0e1a44d8a253638aedfcf04, type: 2}
+--- !u!4 &1317028216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317028214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.70962, y: 0, z: 67.68354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1607218727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,3 +1601,6 @@ SceneRoots:
   - {fileID: 1226996007}
   - {fileID: 641939952}
   - {fileID: 1607218730}
+  - {fileID: 1317028216}
+  - {fileID: 549843483}
+  - {fileID: 416988663}
