@@ -3,7 +3,10 @@ using System.Collections.Generic;
 
 public class VisualPuzzleSpawner : MonoBehaviour
 {
-    // Called by IntersectionDetector after instantiation
+    private List<GameObject> _assets = new List<GameObject>();
+    
+    private string _puzzleHint = "Find the real one — one of these has not been hallucinated.";
+
     public void Setup(
         VisualPuzzleData data,
         List<Vector2Int> exits,
@@ -12,6 +15,9 @@ public class VisualPuzzleSpawner : MonoBehaviour
         float cellWidth,
         float cellDepth)
     {
+        
+        _puzzleHint = data.playerHint;
+
         // Shuffle the hallucinated prefabs so we don't always pick the same ones
         var hallucinationPool = new List<GameObject>(data.hallucinatedPrefabs);
         Shuffle(hallucinationPool);
@@ -31,8 +37,25 @@ public class VisualPuzzleSpawner : MonoBehaviour
                 : hallucinationPool[hallucinationIndex++ % hallucinationPool.Count];
 
             Quaternion rot = Quaternion.LookRotation(new Vector3(exit.x, 0, exit.y));
-            Instantiate(prefab, assetPos, rot, transform); // child of this spawner for easy cleanup
+            GameObject asset = Instantiate(prefab, assetPos, rot, transform); // child of this spawner for easy cleanup
+            
+            SetVisible(asset, false); // start invisible
+            _assets.Add(asset);
         }
+    }
+
+    public void Reveal()
+    {
+        foreach (var asset in _assets)
+            SetVisible(asset, true);
+
+        PuzzleUI.Instance.ShowPuzzlePopup(_puzzleHint);
+    }
+
+    private void SetVisible(GameObject obj, bool visible)
+    {
+        foreach (var renderer in obj.GetComponentsInChildren<Renderer>())
+            renderer.enabled = visible;
     }
 
     private void Shuffle<T>(List<T> list)

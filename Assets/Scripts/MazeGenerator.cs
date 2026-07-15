@@ -148,10 +148,12 @@ public class MazeGenerator : MonoBehaviour
 
         Physics.SyncTransforms();
 
-        ComputeDistancesFromExit();
+        // ComputeDistancesFromExit();
         yield return GenerateMaze(null, _mazeGrid[0, 0]);
 
         _mazeGrid[_exitCoord.x, _exitCoord.y].ClearFrontWall();
+
+        ComputeDistancesFromExit();
 
         if (_intersectionDetector != null)
         {
@@ -166,6 +168,70 @@ public class MazeGenerator : MonoBehaviour
     }
 
     private void ComputeDistancesFromExit()
+    {
+        _distanceFromExit = new int[_mazeWidth, _mazeDepth];
+
+        for (int x = 0; x < _mazeWidth; x++)
+        {
+            for (int z = 0; z < _mazeDepth; z++)
+            {
+                _distanceFromExit[x, z] = -1;
+            }
+        }
+
+        Queue<Vector2Int> queue = new Queue<Vector2Int>();
+        queue.Enqueue(_exitCoord);
+        _distanceFromExit[_exitCoord.x, _exitCoord.y] = 0;
+
+        while (queue.Count > 0)
+        {
+            Vector2Int current = queue.Dequeue();
+            int nextDist = _distanceFromExit[current.x, current.y] + 1;
+            MazeCell currentCell = _mazeGrid[current.x, current.y];
+
+            // 1. Check RIGHT Neighbor (Only if there's no right wall blocking it)
+            if (current.x + 1 < _mazeWidth && !currentCell.HasRightWall())
+            {
+                if (_distanceFromExit[current.x + 1, current.y] == -1)
+                {
+                    _distanceFromExit[current.x + 1, current.y] = nextDist;
+                    queue.Enqueue(new Vector2Int(current.x + 1, current.y));
+                }
+            }
+
+            // 2. Check LEFT Neighbor (Only if there's no left wall blocking it)
+            if (current.x - 1 >= 0 && !currentCell.HasLeftWall())
+            {
+                if (_distanceFromExit[current.x - 1, current.y] == -1)
+                {
+                    _distanceFromExit[current.x - 1, current.y] = nextDist;
+                    queue.Enqueue(new Vector2Int(current.x - 1, current.y));
+                }
+            }
+
+            // 3. Check FRONT (Up) Neighbor (Only if there's no front wall blocking it)
+            if (current.y + 1 < _mazeDepth && !currentCell.HasFrontWall())
+            {
+                if (_distanceFromExit[current.x, current.y + 1] == -1)
+                {
+                    _distanceFromExit[current.x, current.y + 1] = nextDist;
+                    queue.Enqueue(new Vector2Int(current.x, current.y + 1));
+                }
+            }
+
+            // 4. Check BACK (Down) Neighbor (Only if there's no back wall blocking it)
+            if (current.y - 1 >= 0 && !currentCell.HasBackWall())
+            {
+                if (_distanceFromExit[current.x, current.y - 1] == -1)
+                {
+                    _distanceFromExit[current.x, current.y - 1] = nextDist;
+                    queue.Enqueue(new Vector2Int(current.x, current.y - 1));
+                }
+            }
+        }
+    }
+
+    private void old_ComputeDistancesFromExit()
     {
         _distanceFromExit = new int[_mazeWidth, _mazeDepth];
 
