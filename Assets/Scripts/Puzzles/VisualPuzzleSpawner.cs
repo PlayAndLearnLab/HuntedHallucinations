@@ -49,6 +49,12 @@ public class VisualPuzzleSpawner : MonoBehaviour
         foreach (var asset in _assets)
             SetVisible(asset, true);
 
+        if (PuzzleUI.Instance == null)
+        {
+            Debug.LogError("PuzzleUI.Instance is null — make sure PuzzleUI is in the scene and runs before spawners");
+            return;
+        }
+
         PuzzleUI.Instance.ShowPuzzlePopup(_puzzleHint);
     }
 
