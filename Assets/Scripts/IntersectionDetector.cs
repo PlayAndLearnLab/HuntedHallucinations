@@ -103,6 +103,7 @@ public class IntersectionDetector : MonoBehaviour
             VisualPuzzleSpawner spawner = spawnerObj.GetComponent<VisualPuzzleSpawner>();
             spawner.Setup(visualData, exits, bestExit, cell.transform.position, cellWidth, cellDepth);
             _spawnedObjects.Add(spawnerObj);
+            zone.RegisterPuzzleSpawner(spawnerObj);
         }
         else if (puzzle is TextPuzzleData textData && _textPuzzleSpawnerPrefab != null)
         {
@@ -114,6 +115,7 @@ public class IntersectionDetector : MonoBehaviour
             TextPuzzleSpawner spawner = spawnerObj.GetComponent<TextPuzzleSpawner>();
             spawner.Setup(textData, exits, bestExit, cell.transform.position, cellWidth, cellDepth, _labelHeight);
             _spawnedObjects.Add(spawnerObj);
+            zone.RegisterPuzzleSpawner(spawnerObj);
         }
 
         // Wrong path triggers — unchanged from before

@@ -23,6 +23,10 @@ public class PuzzleUI : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
 
+        if (_popupGroup == null) Debug.LogError("PuzzleUI: _popupGroup is not assigned!");
+        if (_popupText  == null) Debug.LogError("PuzzleUI: _popupText is not assigned!");
+
+
         // Start hidden
         _popupGroup.alpha          = 0f;
         _popupGroup.interactable   = false;
@@ -32,6 +36,8 @@ public class PuzzleUI : MonoBehaviour
     // Called by IntersectionZone when the player enters
     public void ShowPuzzlePopup(string message)
     {
+        Debug.Log($"PuzzleUI.ShowPuzzlePopup called with: {message}");
+        
         if (_currentFade != null) StopCoroutine(_currentFade);
         _currentFade = StartCoroutine(FadeSequence(message));
 
