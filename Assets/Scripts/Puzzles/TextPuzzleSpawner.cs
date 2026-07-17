@@ -53,6 +53,12 @@ public class TextPuzzleSpawner : MonoBehaviour
         foreach (var label in _labels)
             label.SetActive(true);
 
+        if (PuzzleUI.Instance == null)
+        {
+            Debug.LogError("PuzzleUI.Instance is null — make sure PuzzleUI is in the scene and runs before spawners");
+            return;
+        }
+
         PuzzleUI.Instance.ShowPuzzlePopup(_puzzleHint);
     }
 
