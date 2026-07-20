@@ -16,3 +16,4 @@ MonoBehaviour:
   mediumProportion: 0
   hardProportion: 0
   visualPuzzleChance: 0.5
+  wrongPathConsequence: 1

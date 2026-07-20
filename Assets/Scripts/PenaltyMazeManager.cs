@@ -7,10 +7,13 @@ public class PenaltyMazeManager : MonoBehaviour
     public GameObject MazeRestartPanel;
 
     [SerializeField] private MazeGenerator _mazeGenerator;
+    [SerializeField] private MazeDifficultySettings  _difficultySettings;
 
     private GameObject _player;
     private PlayerController _playerController;
     private Vector3 _lastSnappedPos;
+
+    public MazeDifficultySettings DifficultySettings => _difficultySettings;
 
     void Awake()
     {
@@ -37,9 +40,58 @@ public class PenaltyMazeManager : MonoBehaviour
         }
     }
 
-    public void OnWrongPathCommitted()
+    public void old_OnWrongPathCommitted()
     {
         StartCoroutine(RebuildMaze());
+    }
+
+    public void OnWrongPathCommitted()
+    {
+        if (_difficultySettings == null)
+        {
+            Debug.LogError("PenaltyMazeManager: no DifficultySettings assigned");
+            return;
+        }
+
+        switch (_difficultySettings.wrongPathConsequence)
+        {
+            case WrongPathConsequence.Nothing:
+                // Do nothing — player can backtrack freely
+                break;
+
+            case WrongPathConsequence.ReturnToStart:
+                StartCoroutine(ReturnToStart());
+                break;
+
+            case WrongPathConsequence.MazeCollapse:
+                StartCoroutine(RebuildMaze());
+                break;
+        }
+    }
+
+    private IEnumerator ReturnToStart()
+    {
+        if (_playerController != null) _playerController.ToggleMovement(false);
+
+        MazeRestartPanel.SetActive(true);
+        PlayerCamera.SetCursorFree(true);
+
+        CharacterController cc = _player.GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = false;
+
+        // Move player out of the way during the pause
+        _player.transform.position = Vector3.down * 100f;
+        Physics.SyncTransforms();
+
+        yield return new WaitForSeconds(0.3f);
+
+        // Teleport to cell [0,0] of the existing maze — no rebuild
+        Vector3 startPos = _mazeGenerator.GetMazeGrid()[0, 0].transform.position + Vector3.up * 0.5f;
+        _player.transform.position = startPos;
+        Physics.SyncTransforms();
+
+        if (cc != null) cc.enabled = true;
+        // Panel stays up until player clicks close
     }
 
     private IEnumerator RebuildMaze()
