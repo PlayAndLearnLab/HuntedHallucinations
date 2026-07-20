@@ -18,6 +18,12 @@ public class WrongPathTrigger : MonoBehaviour
 
     public void Arm()
     {
+        if (PenaltyMazeManager.Instance != null)
+        {
+            var settings = PenaltyMazeManager.Instance.DifficultySettings;
+            if (settings != null && settings.wrongPathConsequence == WrongPathConsequence.Nothing)
+                return;
+        }
         Debug.Log($"Arming WrongPathTrigger at {transform.position}, {gameObject.name} armed");
         _armed = true;
     }
