@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 4f;
+    [SerializeField] private Animator _animator;
+
     [SerializeField] private float _gravity = -9.81f;
 
     private CharacterController _controller;
