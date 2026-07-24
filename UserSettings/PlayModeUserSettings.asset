@@ -1,15 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &1
-MonoBehaviour:
-  m_ObjectHideFlags: 53
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 15050, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEditor.PlayModeModule.dll::Unity.PlayMode.Editor.PlayModeUserSettings
-  m_LastActiveConfiguration: {fileID: 0}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f57ea56bc29d0bfffc19f201228216f8837e771dce659d3122c9ea57d4b27427
+size 495
