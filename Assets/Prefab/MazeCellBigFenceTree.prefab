@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3525223149165405284
 Transform:
@@ -57,8 +57,8 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 0
 --- !u!4 &8077848209382561647
 Transform:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9452ae1262a74094f8a68013fbcd1834, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4804942530625894134
 Transform:
@@ -200,7 +200,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2010318543373230494
 Transform:
@@ -233,7 +233,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4820084419971963435
 Transform:
@@ -267,7 +267,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4601247407776528459
 Transform:
@@ -301,7 +301,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2003153168172482579
 Transform:
@@ -341,7 +341,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8073790851012706728
 Transform:
@@ -375,7 +375,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7187088429420579384
 Transform:
@@ -408,7 +408,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1479430631347104297
 Transform:
@@ -442,7 +442,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3222950096596343675
 Transform:
@@ -484,7 +484,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8343336947073231579
 Transform:
@@ -524,7 +524,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4418122050442019490
 Transform:
@@ -561,7 +561,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6692708674811258647
 Transform:
@@ -671,7 +671,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2763530146653278986
 Transform:
@@ -811,9 +811,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418122050442019490}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -863,6 +871,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -881,9 +901,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -933,6 +961,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -951,9 +991,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8073790851012706728}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1002,6 +1050,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1239,9 +1299,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4804942530625894134}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1290,6 +1358,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1387,9 +1467,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1439,6 +1527,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1457,9 +1557,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4601247407776528459}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1508,6 +1616,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1527,9 +1647,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4804942530625894134}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1578,6 +1706,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1667,9 +1807,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1719,6 +1867,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1737,9 +1897,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1789,6 +1957,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1807,9 +1987,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1859,6 +2047,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1877,9 +2077,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1929,6 +2137,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1947,9 +2167,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1999,6 +2227,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2017,9 +2257,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2010318543373230494}
     m_Modifications:
+    - target: {fileID: 1450416384445464, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1668420592299058, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_SharpStoneDesk_End_01a_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668420592299058, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4054448547446264, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_LocalScale.x
@@ -2069,6 +2317,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 272199028012857572, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268989093233968310, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874383876891330368, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2090,6 +2350,14 @@ PrefabInstance:
     - target: {fileID: 1163180236395570, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_RockGate_01a_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163180236395570, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777052843188134, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4325292392154494, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
       propertyPath: m_LocalScale.x
@@ -2138,6 +2406,18 @@ PrefabInstance:
     - target: {fileID: 4325292392154494, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620010415526952695, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411917877268417079, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8850386478350822728, guid: e784bd578603723449792fd7a2e8a9e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2297,9 +2577,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2349,6 +2637,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2367,9 +2667,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2010318543373230494}
     m_Modifications:
+    - target: {fileID: 1023350674886074, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1938591890562860, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_SharpStoneDesk_01b_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938591890562860, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4150269148436132, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
       propertyPath: m_LocalScale.x
@@ -2419,6 +2727,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2842394997925778330, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707480699194601168, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282637122843251302, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2437,9 +2757,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2489,6 +2817,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2507,9 +2847,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418122050442019490}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2558,6 +2906,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2577,9 +2937,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8073790851012706728}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2629,6 +2997,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2647,9 +3027,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4804942530625894134}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2699,6 +3087,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2717,9 +3117,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1479430631347104297}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2769,6 +3177,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2787,9 +3207,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2839,6 +3267,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2857,9 +3297,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2909,6 +3357,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2927,9 +3387,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4601247407776528459}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2979,6 +3447,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2997,9 +3477,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3049,6 +3537,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3067,9 +3567,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1450416384445464, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1668420592299058, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_SharpStoneDesk_End_01a_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668420592299058, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4054448547446264, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_LocalScale.x
@@ -3118,6 +3626,18 @@ PrefabInstance:
     - target: {fileID: 4054448547446264, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272199028012857572, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268989093233968310, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874383876891330368, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3215,9 +3735,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3267,6 +3795,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3285,9 +3825,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3336,6 +3884,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3425,9 +3985,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7187088429420579384}
     m_Modifications:
+    - target: {fileID: 1450416384445464, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1668420592299058, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_SharpStoneDesk_End_01a_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668420592299058, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4054448547446264, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
       propertyPath: m_LocalScale.x
@@ -3477,6 +4045,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 272199028012857572, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268989093233968310, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874383876891330368, guid: 20662c1e35e07154cb911cd52f7701dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3495,9 +4075,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3547,6 +4135,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3565,9 +4165,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1479430631347104297}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3617,6 +4225,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3635,9 +4255,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3686,6 +4314,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3775,9 +4415,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7187088429420579384}
     m_Modifications:
+    - target: {fileID: 1023350674886074, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1938591890562860, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_SharpStoneDesk_01b_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938591890562860, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4150269148436132, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
       propertyPath: m_LocalScale.x
@@ -3827,6 +4475,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2842394997925778330, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707480699194601168, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282637122843251302, guid: 5ab73c8a92f6cb543b610e4b0e604e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3845,9 +4505,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3897,6 +4565,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3915,9 +4595,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3967,6 +4655,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3985,9 +4685,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4037,6 +4745,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4055,9 +4775,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4107,6 +4835,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4125,9 +4865,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4820084419971963435}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4177,6 +4925,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4195,9 +4955,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4247,6 +5015,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4265,9 +5045,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4317,6 +5105,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4335,9 +5135,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4386,6 +5194,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4475,9 +5295,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4526,6 +5354,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4615,9 +5455,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1479430631347104297}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4667,6 +5515,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4685,9 +5545,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418122050442019490}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4736,6 +5604,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4825,9 +5705,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4877,6 +5765,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4895,9 +5795,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4601247407776528459}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -4947,6 +5855,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4965,9 +5885,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5017,6 +5945,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5035,9 +5975,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5086,6 +6034,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5245,9 +6205,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5297,6 +6265,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5315,9 +6295,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4820084419971963435}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5367,6 +6355,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5385,9 +6385,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5437,6 +6445,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5455,9 +6475,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3222950096596343675}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5507,6 +6535,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5525,9 +6565,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8073790851012706728}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5577,6 +6625,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5595,9 +6655,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4820084419971963435}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5647,6 +6715,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5665,9 +6745,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3525223149165405284}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5716,6 +6804,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5735,9 +6835,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5787,6 +6895,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5805,9 +6925,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2003153168172482579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5857,6 +6985,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5875,9 +7015,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8343336947073231579}
     m_Modifications:
+    - target: {fileID: 1112254291041322, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_Name
       value: EA03_Fence_Beam_01c_PRE (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858865935988744, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5926,6 +7074,18 @@ PrefabInstance:
     - target: {fileID: 4384136180659264, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571603700879593978, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760735546120969755, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607836609902015452, guid: 675fee7fd24cdce44beab54f7f90b1e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

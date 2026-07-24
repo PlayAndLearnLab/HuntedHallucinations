@@ -13,6 +13,14 @@ public class TimerManager : MonoBehaviour
 
     public float TimeRemaining => _timeRemaining;
 
+    void Start()
+    {
+        float[] distances = new float[32];
+        distances[8] = 50f;  // Layer 8 objects cull at 50 units
+        distances[9] = 100f; // Layer 9 objects cull at 100 units
+        GetComponent<Camera>().layerCullDistances = distances;
+    }
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
