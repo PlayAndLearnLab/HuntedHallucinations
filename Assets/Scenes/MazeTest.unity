@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
+  m_FogColor: {r: 0.52985936, g: 0.5556515, b: 0.5943396, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.014
   m_LinearFogStart: 10
   m_LinearFogEnd: 50
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -26,8 +26,8 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
+  m_SkyboxMaterial: {fileID: 2100000, guid: 82b660520bdecce4daf45d270ec93fe4, type: 2}
+  m_HaloStrength: 1
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 410087040}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -849,11 +849,11 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 19371
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -1194,6 +1194,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &712659377
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 205.92484
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6271
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 136.69044
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855471986611602793, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292404891959110745, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
+      propertyPath: m_Name
+      value: Sky and Fog Global Volume (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 28cdd75aef9f1494bb1076af4c064c34, type: 3}
 --- !u!1 &748617718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,15 +2039,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _mazeCellPrefabs:
-  - {fileID: 7515968108491263667, guid: e9bec6e79fe0e4813b3b9da7ff2aa1b5, type: 3}
-  - {fileID: 7515968108491263667, guid: b8ee6ce3d24784ba397a2d78635a8eb8, type: 3}
+  - {fileID: 7515968108491263667, guid: 9950237d2ce3e47dd9a713699d380df5, type: 3}
   _mazeWidth: 10
   _mazeDepth: 10
   _playerPrefab: {fileID: 4078585674686211419, guid: 4d8676125af224fafbb8ca7645fdf9c6, type: 3}
   _intersectionDetector: {fileID: 1226996008}
   _wrongPathBias: 0
-  _cellWidth: 20
-  _cellDepth: 20
+  _cellWidth: 30
+  _cellDepth: 30
   _cellHeight: 1
 --- !u!4 &1226996007
 Transform:
@@ -3212,3 +3268,4 @@ SceneRoots:
   - {fileID: 416988663}
   - {fileID: 956707599}
   - {fileID: 173373809}
+  - {fileID: 712659377}

@@ -1,0 +1,502 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6154802572970100941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5629947568906001878}
+  m_Layer: 0
+  m_Name: BP_Brazier_02_C0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5629947568906001878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154802572970100941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7135589539378244878}
+  - {fileID: 1637433543204339067}
+  - {fileID: 2667400545464136932}
+  - {fileID: 229013548134483176}
+  - {fileID: 7867057171948547634}
+  - {fileID: 6047017814498541956}
+  - {fileID: 6074110755087637985}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &229013548586344501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030972636, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Beam_Small_03_5_4006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_RootOrder
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.43213993
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.43214
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4321399
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.071869
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07333565
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.647644
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.62894005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.32999104
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5887471
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.38589802
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000011324564573514378060, type: 3}
+--- !u!4 &229013548134483176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+  m_PrefabInstance: {fileID: 229013548586344501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1637433543832600986
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030978784, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Beam_Small_04_7_4008
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_RootOrder
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5719052
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.571905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.43504405
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.1322327
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.029083252
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.606812
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99109286
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.13317299
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000005890603750140772427, type: 3}
+--- !u!4 &1637433543204339067 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030978785, guid: abc00000000005890603750140772427, type: 3}
+  m_PrefabInstance: {fileID: 1637433543832600986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2667400545418987531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030978798, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Beam_Small_05_6_4007
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_RootOrder
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5371383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.537138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5371383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0553284
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.023936272
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.616882
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.11999199
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9927749
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000004737322495828118530, type: 3}
+--- !u!4 &2667400545464136932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030978799, guid: abc00000000004737322495828118530, type: 3}
+  m_PrefabInstance: {fileID: 2667400545418987531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6047017814015245545
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030978924, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Brazier_02_3_4004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_RootOrder
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.81607056
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.054153442
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 122.57263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000010688376932599102849, type: 3}
+--- !u!4 &6047017814498541956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030978925, guid: abc00000000010688376932599102849, type: 3}
+  m_PrefabInstance: {fileID: 6047017814015245545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6074110754193383768
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030978744, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Beam_Small_01_2_4003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_RootOrder
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.571905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.571905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.571905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2080383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15252686
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.592651
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000008682472602170490894, type: 3}
+--- !u!4 &6074110755087637985 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030978745, guid: abc00000000008682472602170490894, type: 3}
+  m_PrefabInstance: {fileID: 6074110754193383768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7135589539968534995
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030972636, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Beam_Small_03_8_4009
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_RootOrder
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5719054
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5719052
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57190526
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2089539
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.096838
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.678894
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.57922786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.40557992
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57922786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.40557992
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000011324564573514378060, type: 3}
+--- !u!4 &7135589539378244878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+  m_PrefabInstance: {fileID: 7135589539968534995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7867057172941490927
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5629947568906001878}
+    m_Modifications:
+    - target: {fileID: 1030972636, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_Name
+      value: BP_Brazier_02_C_0_SM_Beam_Small_03_4_4005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_RootOrder
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.43214032
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.43214
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.43214032
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0780334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07333565
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.562134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abc00000000011324564573514378060, type: 3}
+--- !u!4 &7867057171948547634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1030972637, guid: abc00000000011324564573514378060, type: 3}
+  m_PrefabInstance: {fileID: 7867057172941490927}
+  m_PrefabAsset: {fileID: 0}
