@@ -66,7 +66,7 @@ public class IntersectionDetector : MonoBehaviour
 
             int dist = distanceFromExit[targetX, targetZ];
 
-            // --- THE FIX ---
+            
             // Ignore dead ends/unreachable paths (-1) entirely
             if (dist == -1) continue; 
 
@@ -103,7 +103,8 @@ public class IntersectionDetector : MonoBehaviour
             VisualPuzzleSpawner spawner = spawnerObj.GetComponent<VisualPuzzleSpawner>();
             spawner.Setup(visualData, exits, bestExit, cell.transform.position, cellWidth, cellDepth);
             _spawnedObjects.Add(spawnerObj);
-            zone.RegisterPuzzleSpawner(spawnerObj);
+            // zone.RegisterPuzzleSpawner(spawnerObj);
+            if (zone != null) zone.RegisterPuzzleSpawner(spawnerObj);
         }
         else if (puzzle is TextPuzzleData textData && _textPuzzleSpawnerPrefab != null)
         {
@@ -115,7 +116,7 @@ public class IntersectionDetector : MonoBehaviour
             TextPuzzleSpawner spawner = spawnerObj.GetComponent<TextPuzzleSpawner>();
             spawner.Setup(textData, exits, bestExit, cell.transform.position, cellWidth, cellDepth, _labelHeight);
             _spawnedObjects.Add(spawnerObj);
-            zone.RegisterPuzzleSpawner(spawnerObj);
+            if (zone != null) zone.RegisterPuzzleSpawner(spawnerObj);
         }
 
         // Wrong path triggers — unchanged from before

@@ -2049,7 +2049,6 @@ MonoBehaviour:
   _cellWidth: 30
   _cellDepth: 30
   _cellHeight: 1
-  _exitPortalPrefab: {fileID: 4259095392611379391, guid: ea9747ff479c8d8449f7d93e9960ec08, type: 3}
 --- !u!4 &1226996007
 Transform:
   m_ObjectHideFlags: 0
