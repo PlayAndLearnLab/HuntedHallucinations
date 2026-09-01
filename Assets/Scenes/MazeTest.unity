@@ -522,7 +522,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!154 &173373807
 TerrainCollider:
@@ -593,7 +593,7 @@ Transform:
   m_GameObject: {fileID: 173373806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -350, y: -3, z: -350}
+  m_LocalPosition: {x: -83.8, y: -3, z: -124.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -677,7 +677,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &330585546
@@ -2041,15 +2041,15 @@ MonoBehaviour:
   _mazeCellPrefabs:
   - {fileID: 7515968108491263667, guid: 9950237d2ce3e47dd9a713699d380df5, type: 3}
   - {fileID: 7515968108491263667, guid: d1630f3cce46945d29ce1a7321229f64, type: 3}
-  _mazeWidth: 10
-  _mazeDepth: 10
+  _mazeWidth: 5
+  _mazeDepth: 5
   _playerPrefab: {fileID: 4078585674686211419, guid: 4d8676125af224fafbb8ca7645fdf9c6, type: 3}
   _intersectionDetector: {fileID: 1226996008}
   _wrongPathBias: 0
   _cellWidth: 30
   _cellDepth: 30
   _cellHeight: 1
-  _exitPortalPrefab: {fileID: 4259095392611379391, guid: ea9747ff479c8d8449f7d93e9960ec08, type: 3}
+  _exitPortalPrefab: {fileID: 8918175083306843877, guid: 14210967743c94e138c7ca2b6ce4d845, type: 3}
 --- !u!4 &1226996007
 Transform:
   m_ObjectHideFlags: 0

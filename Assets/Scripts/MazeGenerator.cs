@@ -179,7 +179,7 @@ public class MazeGenerator : MonoBehaviour
         if (_exitPortalPrefab == null) return;
 
         MazeCell exitCell = _mazeGrid[exitCoord.x, exitCoord.y];
-        Vector3 portalPos = exitCell.transform.position + Vector3.up * 0.5f;
+        Vector3 portalPos = exitCell.transform.position + Vector3.up * 0.1f;
 
         GameObject portalObj = Instantiate(_exitPortalPrefab, portalPos, Quaternion.identity);
         portalObj.transform.SetParent(exitCell.transform);
