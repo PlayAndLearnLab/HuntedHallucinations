@@ -9,6 +9,8 @@ public class TextPuzzleSpawner : MonoBehaviour
     private List<GameObject> _labels = new List<GameObject>();
     private string _puzzleHint;
 
+    public TextPuzzleData AssignedData { get; private set; }
+
     public void Setup(
         TextPuzzleData data,
         List<Vector2Int> exits,
@@ -18,6 +20,7 @@ public class TextPuzzleSpawner : MonoBehaviour
         float cellDepth,
         float labelHeight)
     {
+        AssignedData = data;
         _puzzleHint = data.playerHint;
 
         var falsePool = new List<string>(data.falseStatements);

@@ -14,6 +14,10 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private IntersectionDetector _intersectionDetector;
 
+    [Header("GDD Binder")]
+    [Tooltip("Prefab with a GDDBinder component. Spawned once at cell (0,0), not re-spawned on maze rebuild.")]
+    [SerializeField] private GameObject _gddBinderPrefab;
+
     [Range(0f, 1f)]
     [SerializeField] private float _wrongPathBias = 0.7f;
 
@@ -32,6 +36,7 @@ public class MazeGenerator : MonoBehaviour
     public float CellSize => (_cellWidth + _cellDepth) * 0.5f;
 
     private GameObject _playerInstance;
+    private GameObject _binderInstance;
     private MazeCell[,] _mazeGrid;
     private int[,] _distanceFromExit;
     private Vector2Int _exitCoord;
@@ -171,6 +176,13 @@ public class MazeGenerator : MonoBehaviour
         {
             Vector3 startPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
             _playerInstance = Instantiate(_playerPrefab, startPosition, Quaternion.identity);
+        }
+
+        if (_gddBinderPrefab != null && _binderInstance == null)
+        {
+            Vector3 binderPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.05f + Vector3.forward * 2f 
+            + Vector3.right * 1f; // + Vector3.up * 0.5f 
+            _binderInstance = Instantiate(_gddBinderPrefab, binderPosition, Quaternion.identity*Quaternion.Euler(0, 0, 90f));
         }
     }
 

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-// 1. ADD THIS IMPORT LINE FOR THE NEW INPUT SYSTEM
 using UnityEngine.InputSystem; 
 
 public class UI_script : MonoBehaviour
@@ -28,6 +27,25 @@ public class UI_script : MonoBehaviour
     }
 
     private void ToggleBook()
+    {
+        if (BookPanel == null) return;
+ 
+        // Locked until the player has picked up the GDD Binder at (0,0).
+        if (GDDManager.Instance != null && !GDDManager.Instance.HasBinder) return;
+ 
+        // If the book panel is active, close it. Otherwise, open it.
+        if (BookPanel.activeSelf)
+        {
+            OnBookClosed();
+        }
+        else
+        {
+            OnBookOpened();
+        }
+    }
+ 
+
+    private void old_ToggleBook()
     {
         if (BookPanel == null) return;
 

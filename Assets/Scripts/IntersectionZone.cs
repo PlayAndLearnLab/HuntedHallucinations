@@ -20,6 +20,16 @@ public class IntersectionZone : MonoBehaviour
         _textSpawner   = spawnerObj.GetComponent<TextPuzzleSpawner>();
     }
 
+    // Used by the GDD page mechanic to know which ground-truth spec belongs
+    // to this intersection, so a page dropped one cell before it can carry
+    // the matching PuzzleData.
+    public PuzzleData GetAssignedPuzzleData()
+    {
+        if (_visualSpawner != null) return _visualSpawner.AssignedData;
+        if (_textSpawner != null)   return _textSpawner.AssignedData; // requires the same AssignedData getter added to TextPuzzleSpawner — see README
+        return null;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
