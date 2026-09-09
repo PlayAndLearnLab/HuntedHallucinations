@@ -100,7 +100,11 @@ public class IntersectionDetector : MonoBehaviour
     {
         Vector3 pos = cell.transform.position + Vector3.up * 0.15f;
         GameObject pageObj = Instantiate(_gddPagePrefab, pos, Quaternion.identity);
-        pageObj.transform.localScale = new Vector3(cellWidth * 0.3f, 1f, cellDepth * 0.3f);
+        // pageObj.transform.localScale = new Vector3(cellWidth * 0.3f, 2f, cellDepth * 0.3f);
+        pageObj.transform.localScale = Vector3.one;
+
+        // 4. Safely parent under the cell while maintaining un-skewed world scale
+        // pageObj.transform.SetParent(cell.transform, true);
 
         GDDPage page = pageObj.GetComponent<GDDPage>();
         if (page != null)

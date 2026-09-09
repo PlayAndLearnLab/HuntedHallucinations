@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: e572ca50d660eba40bd21d07e093c64e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 292025
+  packageName: WoodenBoard
+  packageVersion: 1.01
+  assetPath: Assets/PRJ0818_Murakami/WoodenBoard/Meshes/Poster2.fbx
+  uploadId: 695539
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 24200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -21,8 +28,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -63,6 +68,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -95,7 +103,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -112,10 +120,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 292025
-  packageName: WoodenBoard
-  packageVersion: 1.01
-  assetPath: Assets/PRJ0818_Murakami/WoodenBoard/Meshes/Poster2.fbx
-  uploadId: 695539
