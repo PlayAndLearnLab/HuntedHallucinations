@@ -10,6 +10,7 @@ public class ExitPortal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"ExitPortal triggered by {other.name}");
         // Prevent double triggers if the player stays inside the collider
         if (_isTransitioning) return;
 

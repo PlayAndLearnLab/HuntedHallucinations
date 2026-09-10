@@ -41,8 +41,9 @@ public class TextPuzzleSpawner : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(new Vector3(exit.x, 0, exit.y));
 
             GameObject label = Instantiate(_textLabelPrefab, labelPos, rot, transform);
-            TextMeshPro tmp = label.GetComponentInChildren<TextMeshPro>();
+            TextMeshProUGUI tmp = label.GetComponentInChildren<TextMeshProUGUI>();
             if (tmp != null) tmp.text = statement;
+            if (tmp == null) Debug.LogError("TextPuzzleSpawner: TextMeshPro component not found in label prefab");
 
             label.SetActive(false); // start invisible
             _labels.Add(label);
