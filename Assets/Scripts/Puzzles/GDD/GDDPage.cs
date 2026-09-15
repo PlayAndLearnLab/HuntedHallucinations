@@ -30,8 +30,16 @@ public class GDDPage : MonoBehaviour
             Debug.LogWarning("GDDPage picked up with no assigned PuzzleData — was Setup() called before this object was reachable?");
 
         if (GDDManager.Instance != null)
+        {
             GDDManager.Instance.CollectPage(_data);
+        }
+        else
+        {
+            Debug.LogError("GDDPage: no GDDManager found in the scene.");
+            Destroy(gameObject);
+        }
+            
 
-        Destroy(gameObject);
+        
     }
 }
