@@ -29,6 +29,9 @@ public class MazeGenerator : MonoBehaviour
     [Header("Exit Configuration")]
     [SerializeField] private GameObject _exitPortalPrefab; // Drag your Portal/Door prefab here in Inspector
 
+    [Header("Validation")]
+    [SerializeField] private int _maxRegenerationAttempts = 5;
+
     // Public getters to allow PenaltyMazeManager to read your custom sizes
     public float CellWidth => _cellWidth;
     public float CellDepth => _cellDepth;
@@ -46,6 +49,10 @@ public class MazeGenerator : MonoBehaviour
     {
         yield return BuildMaze(_mazeOrigin);
         TimerManager.Instance.StartTimer();
+        // if (IntroSlideshowManager.Instance != null)
+        //     IntroSlideshowManager.Instance.OnIntroFinished += () => TimerManager.Instance.StartTimer();
+        // else
+        //     TimerManager.Instance.StartTimer();
     }
 
     public void DestroyMaze()
@@ -77,6 +84,47 @@ public class MazeGenerator : MonoBehaviour
     }
 
     private IEnumerator BuildMaze(Vector3 origin)
+{
+    bool valid = false;
+    int attempt = 0;
+
+    while (!valid)
+    {
+        attempt++;
+        yield return CarveMaze(origin);
+
+        valid = _intersectionDetector == null
+            || _intersectionDetector.ValidateBuild(_mazeGrid, _mazeWidth, _mazeDepth, _distanceFromExit);
+
+        if (!valid)
+        {
+            if (attempt >= _maxRegenerationAttempts)
+            {
+                Debug.LogError($"MazeGenerator: failed validation {attempt} times in a row; starting anyway.");
+                valid = true; // stop retrying, keep this build
+            }
+            else
+            {
+                Debug.LogWarning($"MazeGenerator: validation failed (attempt {attempt}), regenerating.");
+                DestroyMaze(); // tears down cells + calls ClearIndicators()
+            }
+        }
+    }
+
+    if (_playerInstance == null)
+    {
+        Vector3 startPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
+        _playerInstance = Instantiate(_playerPrefab, startPosition, Quaternion.identity);
+    }
+
+    if (_gddBinderPrefab != null && _binderInstance == null)
+    {
+        Vector3 binderPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
+        _binderInstance = Instantiate(_gddBinderPrefab, binderPosition, Quaternion.identity);
+    }
+}
+
+    private IEnumerator CarveMaze(Vector3 origin)
     {
         // _exitCoord = new Vector2Int(_mazeWidth - 1, _mazeDepth - 1);
         _mazeGrid = new MazeCell[_mazeWidth, _mazeDepth];
@@ -172,18 +220,18 @@ public class MazeGenerator : MonoBehaviour
             _intersectionDetector.OnMazeReady(_mazeGrid, _mazeWidth, _mazeDepth, _distanceFromExit, _cellWidth, _cellDepth);
         }
 
-        if (_playerInstance == null)
-        {
-            Vector3 startPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
-            _playerInstance = Instantiate(_playerPrefab, startPosition, Quaternion.identity);
-        }
+        // if (_playerInstance == null)
+        // {
+        //     Vector3 startPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
+        //     _playerInstance = Instantiate(_playerPrefab, startPosition, Quaternion.identity);
+        // }
 
-        if (_gddBinderPrefab != null && _binderInstance == null)
-        {
-            Vector3 binderPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.05f + Vector3.forward * 2f 
-            + Vector3.right * 1f; // + Vector3.up * 0.5f 
-            _binderInstance = Instantiate(_gddBinderPrefab, binderPosition, Quaternion.identity*Quaternion.Euler(0, 0, 90f));
-        }
+        // if (_gddBinderPrefab != null && _binderInstance == null)
+        // {
+        //     Vector3 binderPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.05f + Vector3.forward * 2f 
+        //     + Vector3.right * 1f; // + Vector3.up * 0.5f 
+        //     _binderInstance = Instantiate(_gddBinderPrefab, binderPosition, Quaternion.identity*Quaternion.Euler(0, 0, 90f));
+        // }
     }
 
     private void SpawnExitPortal(Vector2Int exitCoord)
