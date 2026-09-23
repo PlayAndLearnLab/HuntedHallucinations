@@ -48,7 +48,7 @@ public class IntroSlideshowManager : MonoBehaviour
 
     /// <summary>Fired once, right before the next scene loads.</summary>
     public event Action OnIntroFinished;
-    
+
 
     public bool IsPlaying { get; private set; }
 
@@ -99,6 +99,17 @@ public class IntroSlideshowManager : MonoBehaviour
     {
         _advanceRequested = true;
     }
+
+    // return to previous page button 
+    public void ReturnToPreviousPage()
+    {
+        if (_currentIndex > 0)
+        {
+            _currentIndex--;
+            StartCoroutine(ShowSlide(_slides[_currentIndex], false));
+        }
+    }
+
 
     private IEnumerator PlaySlideshow()
     {

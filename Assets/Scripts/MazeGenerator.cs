@@ -119,7 +119,7 @@ public class MazeGenerator : MonoBehaviour
 
     if (_gddBinderPrefab != null && _binderInstance == null)
     {
-        Vector3 binderPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f;
+        Vector3 binderPosition = _mazeGrid[0, 0].transform.position + Vector3.up * 0.5f + Vector3.forward * 2f + Vector3.right * 1f;
         _binderInstance = Instantiate(_gddBinderPrefab, binderPosition, Quaternion.identity);
     }
 }
