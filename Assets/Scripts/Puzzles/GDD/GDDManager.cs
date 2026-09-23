@@ -43,7 +43,6 @@ public class GDDManager : MonoBehaviour
         OnBinderCollected?.Invoke();
         Log("You found the Game Design Document! Collect the missing design pages to help you navigate the maze.");
     }
- 
 
     public void CollectPage(PuzzleData data)
     {
@@ -64,13 +63,13 @@ public class GDDManager : MonoBehaviour
 
     public bool HasCollected(PuzzleData data) => _collectedPages.Contains(data);
 
-    // Reuses the existing puzzle-hint popup channel (PuzzleUI) so log prompts
-    // show up through the same UI the puzzles already use. Falls back to a
-    // console log if PuzzleUI isn't in the scene yet (e.g. very early Awake order).
+    // Uses the dedicated GDDMessageUI popup (separate panel/position/style from
+    // the puzzle hints in PuzzleUI). Falls back to a console log if it isn't in
+    // the scene yet.
     private void Log(string message)
     {
-        if (PuzzleUI.Instance != null)
-            PuzzleUI.Instance.ShowPuzzlePopup(message);
+        if (GDDMessageUI.Instance != null)
+            GDDMessageUI.Instance.ShowMessage(message);
         else
             Debug.Log($"[GDD] {message}");
     }
@@ -120,12 +119,19 @@ public class GDDManager : MonoBehaviour
 //         if (HasBinder) return;
 //         HasBinder = true;
 //         OnBinderCollected?.Invoke();
-//         Log("GDD Binder acquired. Collect the missing design pages to audit the AI's claims before each junction.");
+//         Log("You found the Game Design Document! Collect the missing design pages to help you navigate the maze.");
 //     }
+ 
 
 //     public void CollectPage(PuzzleData data)
 //     {
 //         if (data == null) return;
+//         if (_collectedPages.Contains(data))
+//         {
+//             CurrentPage = data; // already have it — just keep it as the "current" reference
+//             return;
+//         }
+
 //         _collectedPages.Add(data);
 //         CurrentPage = data;
 //         OnPageCollected?.Invoke(data);
@@ -147,3 +153,4 @@ public class GDDManager : MonoBehaviour
 //             Debug.Log($"[GDD] {message}");
 //     }
 // }
+

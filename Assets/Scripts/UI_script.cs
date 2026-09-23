@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class UI_script : MonoBehaviour
 {
     [SerializeField] private GameObject BookPanel;
+    [SerializeField] private GameObject ControlsPanel;
 
     private GameObject _player;
     private PlayerController _playerController;
@@ -23,6 +24,11 @@ public class UI_script : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.iKey.wasPressedThisFrame)
         {
             ToggleBook();
+        }
+
+        if (Keyboard.current != null && Keyboard.current.xKey.wasPressedThisFrame)
+        {
+            ToggleControls();
         }
     }
 
@@ -43,22 +49,39 @@ public class UI_script : MonoBehaviour
             OnBookOpened();
         }
     }
- 
 
-    private void old_ToggleBook()
+    public void ToggleControls()
     {
-        if (BookPanel == null) return;
+        if (ControlsPanel == null) return;
 
-        // If the book panel is active, close it. Otherwise, open it.
-        if (BookPanel.activeSelf)
+        // If the controls panel is active, close it. Otherwise, open it.
+        if (ControlsPanel.activeSelf)
         {
-            OnBookClosed();
+            OnControlsClosed();
         }
         else
         {
-            OnBookOpened();
+            OnControlsOpened();
         }
     }
+
+    public void OnControlsOpened()
+    {
+        if (_playerController != null) _playerController.ToggleMovement(false);
+
+        ControlsPanel.SetActive(true);
+        PlayerCamera.SetCursorFree(true);
+    }
+
+    public void OnControlsClosed()
+    {
+        ControlsPanel.SetActive(false);
+        PlayerCamera.SetCursorFree(false);
+        
+        if (_playerController != null) 
+            _playerController.ToggleMovement(true);
+    }
+
 
     private IEnumerator FindPlayerWhenReady()
     {
