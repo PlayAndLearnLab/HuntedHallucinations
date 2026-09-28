@@ -39,4 +39,4 @@ Thumbs.db
 .vscode/
 
 # Crashlytics
-crashlytics-build.properties
+crashlytics-build.properties*.unitypackage

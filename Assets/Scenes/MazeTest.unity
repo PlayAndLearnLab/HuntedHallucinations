@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 330585550}
   - component: {fileID: 330585551}
   - component: {fileID: 330585552}
+  - component: {fileID: 330585553}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -980,8 +981,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a98192003e2418b94c63aed9c9c9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimerManager
-  _totalTime: 300
+  _totalTime: 900
   _timerText: {fileID: 4240496}
+  _gameOverSceneName: GameOver
+  _gameOverFadeColor: {r: 0.25, g: 0, b: 0, a: 1}
+  _fadeInTime: 1
+  _holdTime: 0.3
+  _fadeOutTime: 1.2
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,6 +1046,18 @@ MonoBehaviour:
   _displayDuration: 4
   _fadeInTime: 0.25
   _fadeOutTime: 0.8
+--- !u!114 &330585553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a33bd7852c5a4b83a42571b550c0e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeRunningOutEffect
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

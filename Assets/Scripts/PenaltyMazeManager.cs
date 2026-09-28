@@ -19,6 +19,12 @@ public class PenaltyMazeManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+
+        if (GameSession.SelectedDifficulty != null)
+        {
+            _difficultySettings = GameSession.SelectedDifficulty;
+        }
+        
     }
 
     void Start()
