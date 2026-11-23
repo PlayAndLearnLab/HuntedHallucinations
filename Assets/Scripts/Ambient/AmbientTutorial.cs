@@ -14,6 +14,8 @@ using System.Collections.Generic;
 ///      Only fires for a plain game asset (no manual page, not a junction), so it never reveals a puzzle-based item.
 ///   3. First puzzle-based item in range -> "you can't tell by looking: open your manual, then decide". Reveals nothing.
 ///   4. First time the Sense-making bar moves (first flag or first AI strike) -> what the bar means; the bar pulses.
+///   5. First time a low bar visibly blurs the screen (TimeRunningOutEffect) -> "the AI is clouding your vision";
+///      the bar pulses. Doesn't fire when the blur comes from the timer instead.
 ///
 /// Hints pause and hide while the book or another panel has the cursor, and resume after.
 /// Created automatically by AuditScoreManager (Auto Create Tutorial). All wording is in the Inspector.
@@ -38,6 +40,13 @@ public class AmbientTutorial : MonoBehaviour
     [TextArea(2, 4)] [SerializeField] private string _barText =
         "<b>Sense-making bar (top left)</b>\nGrows most when you check your manual before flagging. The AI drains it.";
 
+    [Header("Vision hint (low Sense-making bar)")]
+    [TextArea(2, 4)] [SerializeField] private string _visionText =
+        "<b>The AI is clouding your vision.</b>\nCheck your manual and flag its fakes to see clearly again.";
+    [SerializeField] private string _visionAiLine = "Getting hard to see?";
+    [Tooltip("Bar-driven effect strength (0..1) at which the hint fires. 0.15 = once the blur is clearly noticeable.")]
+    [Range(0.01f, 1f)] [SerializeField] private float _visionTriggerStrength = 0.15f;
+
     [Header("Timing")]
     [Tooltip("How long each hint stays on screen (seconds). Paused while the book is open.")]
     [SerializeField] private float _hintDuration = 6.5f;
@@ -59,7 +68,7 @@ public class AmbientTutorial : MonoBehaviour
     [Tooltip("On = reuse the parchment look of the manual message popup. Off (or no popup in the scene) = a plain dark panel.")]
     [SerializeField] private bool _useParchment = true;
 
-    private enum Hint { Opening, ObviousFake, Genuine, PuzzleItem, Bar }
+    private enum Hint { Opening, ObviousFake, Genuine, PuzzleItem, Bar, Vision }
 
     private readonly HashSet<Hint> _done = new HashSet<Hint>();
     private readonly List<Hint> _queue = new List<Hint>();
@@ -74,6 +83,7 @@ public class AmbientTutorial : MonoBehaviour
 
     private GameObject _player;
     private AuditHUD _hud;
+    private TimeRunningOutEffect _vision;
     private CanvasGroup _group;
     private TMP_Text _text;
     private RectTransform _panelRT;
@@ -141,6 +151,7 @@ public class AmbientTutorial : MonoBehaviour
         }
 
         WatchItems();
+        WatchVision();
 
         bool blocked = Cursor.lockState != CursorLockMode.Locked; // book / controls panel open
         float dt = Time.unscaledDeltaTime;
@@ -196,6 +207,9 @@ public class AmbientTutorial : MonoBehaviour
             case Hint.ObviousFake: if (_hud != null) _hud.SayLine(_obviousFakeAiLine); break;
             case Hint.Genuine:     if (_hud != null) _hud.SayLine(_genuineAiLine); break;
             case Hint.Bar:         if (_hud != null) _hud.HighlightBar(_hintDuration); break;
+            case Hint.Vision:
+                if (_hud != null) { _hud.SayLine(_visionAiLine); _hud.HighlightBar(_hintDuration); }
+                break;
         }
     }
 
@@ -215,11 +229,23 @@ public class AmbientTutorial : MonoBehaviour
             case Hint.ObviousFake: return _obviousFakeText;
             case Hint.Genuine:     return _genuineText;
             case Hint.PuzzleItem:  return _puzzleItemText;
+            case Hint.Vision:      return _visionText;
             default:               return _barText;
         }
     }
 
     // ---------- triggers ----------
+
+    // Fires the vision hint the first time a LOW BAR (not the timer) is visibly blurring the screen.
+    private void WatchVision()
+    {
+        if (AlreadyShown(Hint.Vision)) return;
+        if (_vision == null) _vision = FindAnyObjectByType<TimeRunningOutEffect>();
+        if (_vision == null) return;
+
+        float bar = _vision.BarTarget;
+        if (bar >= _visionTriggerStrength && bar >= _vision.TimerTarget) Request(Hint.Vision);
+    }
 
     // Fires the item hints the first time the player is close to the matching kind of item.
     private void WatchItems()

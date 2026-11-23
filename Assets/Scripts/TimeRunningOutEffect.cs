@@ -7,6 +7,8 @@ using UnityEngine.Rendering.Universal;
 /// the edges of the screen blur (radial blur, centre stays sharp) and everything
 /// turns progressively red, with a red glow at the edges that pulses like a heartbeat.
 /// It reaches full strength exactly when the timer hits 0.
+/// The same effect also builds up when the Sense-making bar is low (by default from 50%,
+/// full at 10%) and clears again as the bar recovers. Timer and bar don't stack: the stronger wins.
 ///
 /// SETUP (once):
 ///   1. Add this component to any GameObject in the maze scene (e.g. the Main Camera).
@@ -48,6 +50,22 @@ public class TimeRunningOutEffect : MonoBehaviour
 
     [Tooltip("Seconds for the effect to ease into a new level (both modes). Keeps step jumps from popping.")]
     [SerializeField] private float _blendTime = 1.0f;
+
+    [Header("Sense-making bar")]
+    [Tooltip("Also blur / redden the screen when the Sense-making bar (AuditScoreManager) is low. " +
+             "Timer and bar are not added together: whichever is stronger wins.")]
+    [SerializeField] private bool _useSenseMakingBar = true;
+    [Tooltip("The bar effect begins when the bar drops below this value (0.5 = 50%).")]
+    [Range(0f, 1f)]
+    [SerializeField] private float _barEffectStartsBelow = 0.5f;
+    [Tooltip("The bar effect is at full strength at or below this value (0.1 = 10%).")]
+    [Range(0f, 1f)]
+    [SerializeField] private float _barFullStrengthAt = 0.1f;
+    [Tooltip("Maps bar weakness (0 = at the start threshold, 1 = at the full-strength level) to effect strength.")]
+    [SerializeField] private AnimationCurve _barCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+    [Tooltip("Strength cap for the bar effect, in case full strength makes the maze unplayable. 1 = same as the timer at 0:00.")]
+    [Range(0f, 1f)]
+    [SerializeField] private float _barMaxStrength = 1f;
 
     [Header("Blur (at full strength)")]
     [Tooltip("How far the edges smear towards the centre. 0.1 = subtle, 0.25 = heavy.")]
@@ -193,7 +211,10 @@ public class TimeRunningOutEffect : MonoBehaviour
             : "Renderer: waiting for feature...";
 
         RenderPipelineAsset rp = GraphicsSettings.currentRenderPipeline;
-        _status = $"{timerLine}\nStrength: {_current:0.00} (target {target:0.00})\n{renderLine}\n" +
+        AuditScoreManager audit = AuditScoreManager.Instance;
+        string barLine = audit == null ? "Sense-making bar: not in scene"
+            : $"Sense-making bar: {audit.Cleaned:P0} (timer wants {ComputeTimerTarget():0.00}, bar wants {ComputeBarTarget():0.00})";
+        _status = $"{timerLine}\n{barLine}\nStrength: {_current:0.00} (target {target:0.00})\n{renderLine}\n" +
                   $"Active URP asset: {(rp != null ? rp.name : "none")}";
     }
 
@@ -242,7 +263,30 @@ public class TimeRunningOutEffect : MonoBehaviour
         _fbDof.mode.Override(DepthOfFieldMode.Gaussian);
     }
 
-    private float ComputeTarget()
+    /// <summary>How strong the Sense-making bar wants the effect right now (0..1, before easing). Used by AmbientTutorial.</summary>
+    public float BarTarget => ComputeBarTarget();
+    /// <summary>How strong the timer wants the effect right now (0..1, before easing).</summary>
+    public float TimerTarget => ComputeTimerTarget();
+
+    /// <summary>Strength from the timer and from the Sense-making bar; the stronger one wins (no stacking).</summary>
+    private float ComputeTarget() => Mathf.Max(ComputeTimerTarget(), ComputeBarTarget());
+
+    /// <summary>0 while the bar is at or above the start threshold, rising to 1 at the full-strength level.</summary>
+    private float ComputeBarTarget()
+    {
+        if (!_useSenseMakingBar) return 0f;
+        AuditScoreManager audit = AuditScoreManager.Instance;
+        if (audit == null || audit.AiSuppressed) return 0f; // no bar in this scene, or the AI is K.O.'d
+
+        float bar = audit.Cleaned;
+        if (bar >= _barEffectStartsBelow) return 0f;
+
+        float span = Mathf.Max(0.001f, _barEffectStartsBelow - _barFullStrengthAt);
+        float weakness = Mathf.Clamp01((_barEffectStartsBelow - bar) / span); // 0 -> 1 as the bar falls
+        return Mathf.Clamp01(_barCurve.Evaluate(weakness)) * _barMaxStrength;
+    }
+
+    private float ComputeTimerTarget()
     {
         TimerManager timer = TimerManager.Instance;
         if (timer == null || !timer.HasStarted || timer.TotalTime <= 0f) return 0f;
