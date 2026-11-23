@@ -22,6 +22,8 @@
 *.mdb
 *.opendb
 *.VC.db
+*.apk
+*.unitypackage
 
 # OS generated
 .DS_Store
