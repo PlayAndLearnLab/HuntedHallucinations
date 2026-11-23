@@ -21,6 +21,7 @@ public class TimerManager : MonoBehaviour
     private bool _hasStarted = false;
 
     public float TimeRemaining => _timeRemaining;
+    public TextMeshProUGUI TimerText => _timerText; // used by AuditFeedback to place the floating +/- seconds
     public float TotalTime => _totalTime;
     public bool IsRunning => _isRunning;
     /// <summary>True once StartTimer has been called. Before that TimeRemaining is 0 but time is NOT up.</summary>
@@ -45,6 +46,7 @@ public class TimerManager : MonoBehaviour
         _timeRemaining = _totalTime;
         _isRunning = true;
         _hasStarted = true;
+        RunResult.Begin(_totalTime); // end-screen timing + leaderboard
     }
 
     void Update()
@@ -72,10 +74,26 @@ public class TimerManager : MonoBehaviour
 
     public void Stop() => _isRunning = false;
 
+    /// <summary>
+    /// Positive = bonus, negative = penalty. Never pushes the clock past TotalTime, and a penalty
+    /// can't take it below 1 second, so a mistaken flag can't end the run by itself.
+    /// </summary>
+    public void AdjustTime(float deltaSeconds)
+    {
+        if (!_isRunning) return;
+        float floor = Mathf.Min(_timeRemaining, 1f);
+        float ceiling = Mathf.Max(_totalTime, _timeRemaining);
+        float before = _timeRemaining;
+        _timeRemaining = Mathf.Clamp(_timeRemaining + deltaSeconds, floor, ceiling);
+        RunResult.AddAdjust(_timeRemaining - before); // only what really reached the clock counts toward the official time
+        UpdateDisplay();
+    }
+
     private void GameLost()
     {
         Debug.Log("Time is up — game over");
         UpdateDisplay(); // make sure the HUD shows 00:00
+        RunResult.Finish(false); // records the attempt and grabs the last frame for the end screen
 
         // Freeze the player so they can't keep walking during the fade.
         PlayerController pc = FindAnyObjectByType<PlayerController>();

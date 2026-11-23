@@ -42,3 +42,8 @@ Thumbs.db
 
 # Crashlytics
 crashlytics-build.properties*.unitypackage
+
+Haunted_BridgeUp7/
+Haunted_nolag_itch_5/
+*.zip
+*.wasm

@@ -45,6 +45,7 @@ public class TextPuzzleSpawner : MonoBehaviour
             if (tmp != null) tmp.text = statement;
             if (tmp == null) Debug.LogError("TextPuzzleSpawner: TextMeshPro component not found in label prefab");
 
+            AmbientHallucination.Attach(label, !isCorrect, data.pageTitle, true, data); // every hallucination can be flagged
             label.SetActive(false); // start invisible
             _labels.Add(label);
 

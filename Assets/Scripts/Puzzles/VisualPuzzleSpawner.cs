@@ -8,9 +8,12 @@ public class VisualPuzzleSpawner : MonoBehaviour
     private string _puzzleHint = "Find the real one — one of these has not been hallucinated.";
 
     // The ground-truth data this spawner was configured with — read by
-    // IntersectionZone.GetAssignedPuzzleData() so the GDD page mechanic
+    // IntersectionZone.GetAssignedPuzzleData() so the manual page mechanic
     // knows which spec to hand the player for this specific intersection.
     public VisualPuzzleData AssignedData { get; private set; }
+
+    [Tooltip("Height of the floor surface relative to the cell's position. Raise it if assets still look buried.")]
+    [SerializeField] private float _floorOffset = 0f;
 
     public void Setup(
         VisualPuzzleData data,
@@ -43,7 +46,9 @@ public class VisualPuzzleSpawner : MonoBehaviour
 
             Quaternion rot = Quaternion.LookRotation(new Vector3(exit.x, 0, exit.y));
             GameObject asset = Instantiate(prefab, assetPos, rot, transform); // child of this spawner for easy cleanup
+            GroundSnap.LiftAboveFloor(asset, cellWorldPos.y + _floorOffset); // never leave an asset buried in the floor
             
+            AmbientHallucination.Attach(asset, !isCorrect, data.pageTitle, true, data); // every hallucination can be flagged
             SetVisible(asset, false); // start invisible
             _assets.Add(asset);
         }

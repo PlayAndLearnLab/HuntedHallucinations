@@ -14,7 +14,7 @@ public class IntersectionDetector : MonoBehaviour
     [Header("Layout")]
     [SerializeField] private float _labelHeight = 1.5f;
 
-    [Header("GDD Page Mechanic")]
+    [Header("Manual Page Mechanic")]
     [Tooltip("Prefab with a GDDPage component. Spawned on the floor exactly one step before each intersection on the true solution path.")]
     [SerializeField] private GameObject _gddPagePrefab;
 
@@ -33,8 +33,27 @@ public class IntersectionDetector : MonoBehaviour
 
     private bool _subscribedToGDD = false;
 
+    [Header("Loops")]
+    [Tooltip("When two or more exits of a junction are equally short (possible once the maze has loops), " +
+             "pick the 'correct' one at random. Off = always the first one (right, left, front, back).")]
+    [SerializeField] private bool _randomTieBreak = true;
+
+    /// <summary>Lets other systems (AmbientHallucinationSpawner) follow exactly the same route as the pages and puzzles.</summary>
+    public static IntersectionDetector Instance { get; private set; }
+
+    // The maze the zones/pages were last built for — used by NextStepTowardExit().
+    private MazeCell[,] _grid;
+    private int _width, _depth;
+    private int[,] _distanceFromExit;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
     void OnDestroy()
     {
+        if (Instance == this) Instance = null;
         if (_subscribedToGDD && GDDManager.Instance != null)
             GDDManager.Instance.OnPageCollected -= HandlePageCollected;
     }
@@ -61,16 +80,24 @@ public class IntersectionDetector : MonoBehaviour
 
     public void ClearIndicators()
     {
+        AmbientHallucinationSpawner.ClearAll(); // ambient corridor items belong to the maze being torn down
         foreach (GameObject obj in _spawnedObjects)
             if (obj != null) Destroy(obj);
         _spawnedObjects.Clear();
         _zoneByCell.Clear();
         _pageInstancesByData.Clear();
+        _grid = null;              // cells are being destroyed; NextStepTowardExit() returns false until the next OnMazeReady
+        _distanceFromExit = null;
     }
 
     public void OnMazeReady(MazeCell[,] grid, int width, int depth, int[,] distanceFromExit, float cellWidth, float cellDepth)
     {
         EnsureGDDSubscription();
+
+        _grid = grid;
+        _width = width;
+        _depth = depth;
+        _distanceFromExit = distanceFromExit;
 
         // Fresh puzzle pool for this build — PickPuzzle() won't repeat a
         // puzzle until every owned puzzle has been used at least once.
@@ -90,48 +117,64 @@ public class IntersectionDetector : MonoBehaviour
         SpawnGDDPages(grid, width, depth, distanceFromExit, cellWidth, cellDepth);
     }
 
-    // Walks the single correct route from (0,0) to the exit — following
-    // strictly decreasing distance-to-exit at every step, exactly like a
-    // player who never takes a wrong turn. For every intersection it passes
-    // through, drops one GDD page at a random cell somewhere in the corridor
+    /// <summary>
+    /// The next cell on the route toward the exit from <paramref name="cell"/>, as a player who never takes a
+    /// wrong turn would walk it. At a junction this is the exit its puzzle calls correct (which may be a random
+    /// pick between equally short exits); elsewhere it's the first open neighbour one step closer to the exit.
+    /// Pages, validation and ambient items all use this, so they always agree on which way is "right".
+    /// Returns false at the exit, or if there is no valid step.
+    /// </summary>
+    public bool NextStepTowardExit(Vector2Int cell, out Vector2Int next)
+    {
+        next = cell;
+        if (_grid == null || _distanceFromExit == null) return false;
+
+        int dist = _distanceFromExit[cell.x, cell.y];
+        if (dist <= 0) return false;
+
+        if (_zoneByCell.TryGetValue(cell, out IntersectionZone zone) && zone != null && zone.HasCorrectExit)
+        {
+            next = cell + zone.CorrectExit;
+            return true;
+        }
+
+        foreach (Vector2Int exit in GetOpenExits(_grid[cell.x, cell.y], _width, _depth))
+        {
+            Vector2Int candidate = cell + exit;
+            if (_distanceFromExit[candidate.x, candidate.y] == dist - 1)
+            {
+                next = candidate;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Walks the correct route from (0,0) to the exit (see NextStepTowardExit).
+    // For every intersection it passes
+    // through, drops one manual page at a random cell somewhere in the corridor
     // segment since the previous intersection (or the start) — never on the
     // intersection cell itself. Skips spawning entirely if the player already
-    // holds that page. Because the maze is a perfect maze (no loops), this
-    // path and the "one correct next step" at each cell are always unambiguous.
+    // holds that page. With loops there can be several equally short routes;
+    // following the junctions' recorded CorrectExit keeps pages on the route the puzzles call right.
     private void SpawnGDDPages(MazeCell[,] grid, int width, int depth, int[,] distanceFromExit, float cellWidth, float cellDepth)
     {
         if (_gddPagePrefab == null) return;
 
         Vector2Int current = new Vector2Int(0, 0);
-        Vector2Int previous = new Vector2Int(-1, -1); // sentinel, never matches a real cell
+        int safety = width * depth;
 
         // Cells traversed since the last intersection (or the start),
         // excluding any intersection cell — the candidate pool for random placement.
-        List<MazeCell> segmentCells = new List<MazeCell> { grid[0, 0] };
+        // The start cell is NOT a candidate: the player spawns there, so a page on it was picked up instantly,
+        // before the Binder (the book then opened with a page already inside).
+        List<MazeCell> segmentCells = new List<MazeCell>();
 
-        while (distanceFromExit[current.x, current.y] != 0)
+        while (distanceFromExit[current.x, current.y] != 0 && safety-- > 0)
         {
             MazeCell currentCell = grid[current.x, current.y];
-            List<Vector2Int> exits = GetOpenExits(currentCell, width, depth);
-            int currentDist = distanceFromExit[current.x, current.y];
 
-            Vector2Int next = current;
-            bool foundNext = false;
-
-            foreach (var exit in exits)
-            {
-                Vector2Int candidate = current + exit;
-                if (candidate == previous) continue;
-
-                if (distanceFromExit[candidate.x, candidate.y] == currentDist - 1)
-                {
-                    next = candidate;
-                    foundNext = true;
-                    break;
-                }
-            }
-
-            if (!foundNext) break; // shouldn't happen against a valid distance field, but bail out safely
+            if (!NextStepTowardExit(current, out Vector2Int next)) break; // shouldn't happen against a valid distance field, but bail out safely
 
             if (_zoneByCell.TryGetValue(next, out IntersectionZone nextZone))
             {
@@ -153,7 +196,6 @@ public class IntersectionDetector : MonoBehaviour
                 segmentCells.Clear(); // start a fresh segment past this intersection
             }
 
-            previous = current;
             current = next;
 
             // Don't offer an intersection cell itself as a future spawn point.
@@ -173,7 +215,7 @@ public class IntersectionDetector : MonoBehaviour
         if (page != null)
             page.Setup(data);
         else
-            Debug.LogWarning("GDD page prefab has no GDDPage component.");
+            Debug.LogWarning("manual page prefab has no GDDPage component.");
 
         _spawnedObjects.Add(pageObj);
 
@@ -204,9 +246,11 @@ public class IntersectionDetector : MonoBehaviour
         int x = cell.GridX;
         int z = cell.GridZ;
 
-        // Find the correct exit
-        Vector2Int bestExit = exits[0];
+        // Find the correct exit: the shortest way to the portal. With loops, several exits can be equally
+        // short — collect them all and pick one (at random if _randomTieBreak). Whatever is picked here is
+        // recorded on the zone, and pages / validation / ambient items follow that record.
         int bestDist = int.MaxValue;
+        List<Vector2Int> tied = new List<Vector2Int>();
 
         foreach (var exit in exits)
         {
@@ -215,16 +259,24 @@ public class IntersectionDetector : MonoBehaviour
 
             int dist = distanceFromExit[targetX, targetZ];
 
-            
-            // Ignore dead ends/unreachable paths (-1) entirely
-            if (dist == -1) continue; 
+            // Ignore unreachable cells (-1) entirely
+            if (dist == -1) continue;
 
             if (dist < bestDist)
             {
                 bestDist = dist;
-                bestExit = exit;
+                tied.Clear();
+                tied.Add(exit);
+            }
+            else if (dist == bestDist)
+            {
+                tied.Add(exit);
             }
         }
+
+        Vector2Int bestExit = tied.Count == 0 ? exits[0]
+                            : _randomTieBreak ? tied[Random.Range(0, tied.Count)]
+                            : tied[0];
 
         // Spawn intersection zone (arms wrong path triggers when player enters)
         IntersectionZone zone = null;
@@ -292,64 +344,98 @@ public class IntersectionDetector : MonoBehaviour
     }
 
     /// <summary>
-    /// Re-derives the correct exit at every intersection independently from a
-    /// fresh distance field and checks it against what was recorded at build
-    /// time, and checks every intersection has a live GDD page. Called by
-    /// MazeGenerator after OnMazeReady, before the player is allowed to start.
+    /// Checks the build before the player is allowed to start (called by MazeGenerator after OnMazeReady):
+    /// 1. Every junction's recorded correct exit is physically open (both halves of the wall down) and is
+    ///    one of its shortest ways to the portal (ties are fine, since they're picked at random).
+    /// 2. Following the correct exits from the start actually reaches the portal, through passable walls only.
+    /// 3. Every junction ON that route has a live manual page, or the player already holds the page.
+    ///    Junctions off the route never get a page by design, so they aren't checked for one.
     /// </summary>
     public bool ValidateBuild(MazeCell[,] grid, int width, int depth, int[,] distanceFromExit)
     {
+        // 1. Every junction's recorded exit.
         foreach (var kvp in _zoneByCell)
         {
             Vector2Int coord = kvp.Key;
             IntersectionZone zone = kvp.Value;
             if (zone == null) continue;
 
-            MazeCell cell = grid[coord.x, coord.y];
-            List<Vector2Int> exits = GetOpenExits(cell, width, depth);
+            if (!zone.HasCorrectExit)
+            {
+                Debug.LogWarning($"ValidateBuild: junction at {coord} has no recorded correct exit.");
+                return false;
+            }
 
-            Vector2Int recomputedExit = Vector2Int.zero;
             int bestDist = int.MaxValue;
-            bool foundValid = false;
-
-            foreach (var exit in exits)
+            foreach (var exit in GetOpenExits(grid[coord.x, coord.y], width, depth))
             {
-                int tx = coord.x + exit.x;
-                int tz = coord.y + exit.y;
-                int dist = distanceFromExit[tx, tz];
-                if (dist == -1) continue;
-                if (dist < bestDist)
-                {
-                    bestDist = dist;
-                    recomputedExit = exit;
-                    foundValid = true;
-                }
+                if (!IsPassable(grid, width, depth, coord, exit)) continue;
+                int dist = distanceFromExit[coord.x + exit.x, coord.y + exit.y];
+                if (dist >= 0 && dist < bestDist) bestDist = dist;
             }
 
-            if (!foundValid || !zone.HasCorrectExit || zone.CorrectExit != recomputedExit)
-            {
-                Debug.LogWarning($"ValidateBuild: exit mismatch at {coord} — recorded {zone.CorrectExit}, recomputed {recomputedExit}.");
-                return false;
-            }
+            Vector2Int target = coord + zone.CorrectExit;
+            bool recordedOk = IsPassable(grid, width, depth, coord, zone.CorrectExit)
+                && distanceFromExit[target.x, target.y] == bestDist;
 
-            PuzzleData data = zone.GetAssignedPuzzleData();
-            if (data == null)
+            if (!recordedOk)
             {
-                Debug.LogWarning($"ValidateBuild: intersection at {coord} has no assigned puzzle data (AssignedData not set?).");
-                return false;
-            }
-
-            bool hasLivePage = _pageInstancesByData.TryGetValue(data, out List<GameObject> instances)
-                && instances.Exists(o => o != null);
-
-            if (!hasLivePage)
-            {
-                Debug.LogWarning($"ValidateBuild: intersection at {coord} ('{data.pageTitle}') has no live GDD page.");
+                Debug.LogWarning($"ValidateBuild: junction at {coord} points to {zone.CorrectExit}, which is blocked or not a shortest way out.");
                 return false;
             }
         }
 
+        // 2 + 3. Walk the route the pages were placed along.
+        Vector2Int current = Vector2Int.zero;
+        int safety = width * depth;
+        while (distanceFromExit[current.x, current.y] != 0)
+        {
+            if (safety-- <= 0 || !NextStepTowardExit(current, out Vector2Int next)
+                || !IsPassable(grid, width, depth, current, next - current))
+            {
+                Debug.LogWarning($"ValidateBuild: the correct route from the start gets stuck at {current} and never reaches the exit.");
+                return false;
+            }
+
+            if (_zoneByCell.TryGetValue(next, out IntersectionZone zone) && zone != null)
+            {
+                PuzzleData data = zone.GetAssignedPuzzleData();
+                if (data == null)
+                {
+                    Debug.LogWarning($"ValidateBuild: junction at {next} has no assigned puzzle data (AssignedData not set?).");
+                    return false;
+                }
+
+                bool alreadyHeld = GDDManager.Instance != null && GDDManager.Instance.HasCollected(data);
+                bool hasLivePage = _pageInstancesByData.TryGetValue(data, out List<GameObject> instances)
+                    && instances.Exists(o => o != null);
+
+                if (!alreadyHeld && !hasLivePage)
+                {
+                    Debug.LogWarning($"ValidateBuild: junction at {next} ('{data.pageTitle}') is on the route but has no manual page.");
+                    return false;
+                }
+            }
+
+            current = next;
+        }
+
         return true;
+    }
+
+    // A step only counts as open if BOTH cells have their half of the wall down.
+    private bool IsPassable(MazeCell[,] grid, int width, int depth, Vector2Int from, Vector2Int dir)
+    {
+        Vector2Int to = from + dir;
+        if (to.x < 0 || to.y < 0 || to.x >= width || to.y >= depth) return false;
+        MazeCell a = grid[from.x, from.y];
+        MazeCell b = grid[to.x, to.y];
+
+        if (dir == Vector2Int.right)       return !a.HasRightWall() && !b.HasLeftWall();
+        if (dir == Vector2Int.left)        return !a.HasLeftWall()  && !b.HasRightWall();
+        if (dir == new Vector2Int(0, 1))   return !a.HasFrontWall() && !b.HasBackWall();
+        if (dir == new Vector2Int(0, -1))  return !a.HasBackWall()  && !b.HasFrontWall();
+        return false;
     }
 
     

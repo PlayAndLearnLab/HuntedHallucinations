@@ -3,7 +3,7 @@ using TMPro;
 using System.Collections;
 
 /// <summary>
-/// Dedicated popup for GDD Binder / Page messages — completely separate from
+/// Dedicated popup for Manual Binder / Page messages — completely separate from
 /// PuzzleUI, so it can live in a different spot on the canvas and look different.
 ///
 /// SETUP:
@@ -28,6 +28,9 @@ public class GDDMessageUI : MonoBehaviour
     [SerializeField] private float _fadeOutTime     = 0.5f;
 
     private Coroutine _routine;
+
+    /// <summary>The popup panel (read by AmbientTutorial to reuse the parchment look).</summary>
+    public CanvasGroup PanelGroup => _panelGroup;
 
     void Awake()
     {

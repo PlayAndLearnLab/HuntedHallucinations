@@ -1,0 +1,136 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class IntersectionZone : MonoBehaviour
+{
+    private List<WrongPathTrigger> _wrongPathTriggers = new List<WrongPathTrigger>();
+    private VisualPuzzleSpawner _visualSpawner;
+    private TextPuzzleSpawner   _textSpawner;
+    private bool _revealed = false;
+
+    // The exit direction IntersectionDetector decided was "correct" for this
+    // intersection when it was built. Recorded purely so ValidateBuild() can
+    // cross-check it against a fresh recomputation before the player starts.
+    public Vector2Int CorrectExit { get; private set; }
+    public bool HasCorrectExit { get; private set; }
+
+    public void SetCorrectExit(Vector2Int exit)
+    {
+        CorrectExit = exit;
+        HasCorrectExit = true;
+    }
+
+    public void RegisterWrongPathTrigger(WrongPathTrigger trigger)
+    {
+        _wrongPathTriggers.Add(trigger);
+    }
+
+    // Called by IntersectionDetector after spawning the puzzle
+    public void RegisterPuzzleSpawner(GameObject spawnerObj)
+    {
+        _visualSpawner = spawnerObj.GetComponent<VisualPuzzleSpawner>();
+        _textSpawner   = spawnerObj.GetComponent<TextPuzzleSpawner>();
+    }
+
+    // Used by the GDD page mechanic to know which ground-truth spec belongs
+    // to this intersection, so a page dropped one cell before it can carry
+    // the matching PuzzleData.
+    public PuzzleData GetAssignedPuzzleData()
+    {
+        if (_visualSpawner != null) return _visualSpawner.AssignedData;
+        if (_textSpawner != null)   return _textSpawner.AssignedData; // requires the same AssignedData getter added to TextPuzzleSpawner — see README
+        return null;
+    }
+
+    /// <summary>Fired when the player walks out of a junction they had already entered ("puzzle done").</summary>
+    public static event System.Action<IntersectionZone> PlayerLeft;
+
+    void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (_playerInside) { _playerInside = false; _playersInside = Mathf.Max(0, _playersInside - 1); }
+        if (!_revealed) return;
+        PlayerLeft?.Invoke(this);
+    }
+
+    /// <summary>True while the player is standing inside any junction zone.</summary>
+    public static bool PlayerInsideAny => _playersInside > 0;
+    private static int _playersInside;
+    private bool _playerInside;
+
+    void OnDestroy()
+    {
+        // A zone destroyed with the player inside (maze collapse) must not leave the counter stuck.
+        if (_playerInside) { _playerInside = false; _playersInside = Mathf.Max(0, _playersInside - 1); }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (!_playerInside) { _playerInside = true; _playersInside++; }
+
+        // Arm wrong path triggers
+        foreach (var trigger in _wrongPathTriggers)
+            trigger.Arm();
+
+        // Reveal puzzle the first time the player enters
+        if (!_revealed)
+        {
+            _revealed = true;
+            _visualSpawner?.Reveal();
+            _textSpawner?.Reveal();
+        }
+    }
+}
+
+// using UnityEngine;
+// using System.Collections.Generic;
+
+// public class IntersectionZone : MonoBehaviour
+// {
+//     private List<WrongPathTrigger> _wrongPathTriggers = new List<WrongPathTrigger>();
+//     private VisualPuzzleSpawner _visualSpawner;
+//     private TextPuzzleSpawner   _textSpawner;
+//     private bool _revealed = false;
+
+//     public void RegisterWrongPathTrigger(WrongPathTrigger trigger)
+//     {
+//         _wrongPathTriggers.Add(trigger);
+//     }
+
+//     // Called by IntersectionDetector after spawning the puzzle
+//     public void RegisterPuzzleSpawner(GameObject spawnerObj)
+//     {
+//         _visualSpawner = spawnerObj.GetComponent<VisualPuzzleSpawner>();
+//         _textSpawner   = spawnerObj.GetComponent<TextPuzzleSpawner>();
+//     }
+
+//     // Used by the GDD page mechanic to know which ground-truth spec belongs
+//     // to this intersection, so a page dropped one cell before it can carry
+//     // the matching PuzzleData.
+//     public PuzzleData GetAssignedPuzzleData()
+//     {
+//         if (_visualSpawner != null) return _visualSpawner.AssignedData;
+//         if (_textSpawner != null)   return _textSpawner.AssignedData; // requires the same AssignedData getter added to TextPuzzleSpawner — see README
+//         return null;
+//     }
+
+//     void OnTriggerEnter(Collider other)
+//     {
+//         if (!other.CompareTag("Player")) return;
+
+//         // Arm wrong path triggers
+//         foreach (var trigger in _wrongPathTriggers)
+//             trigger.Arm();
+
+//         // Reveal puzzle the first time the player enters
+//         if (!_revealed)
+//         {
+//             _revealed = true;
+//             _visualSpawner?.Reveal();
+//             _textSpawner?.Reveal();
+//         }
+//     }
+// }

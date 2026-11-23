@@ -32,7 +32,7 @@ public class IntersectionZone : MonoBehaviour
         _textSpawner   = spawnerObj.GetComponent<TextPuzzleSpawner>();
     }
 
-    // Used by the GDD page mechanic to know which ground-truth spec belongs
+    // Used by the manual page mechanic to know which ground-truth spec belongs
     // to this intersection, so a page dropped one cell before it can carry
     // the matching PuzzleData.
     public PuzzleData GetAssignedPuzzleData()
@@ -42,9 +42,34 @@ public class IntersectionZone : MonoBehaviour
         return null;
     }
 
+    /// <summary>Fired when the player walks out of a junction they had already entered ("puzzle done").</summary>
+    public static event System.Action<IntersectionZone> PlayerLeft;
+
+    void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (_playerInside) { _playerInside = false; _playersInside = Mathf.Max(0, _playersInside - 1); }
+        if (!_revealed) return;
+        PlayerLeft?.Invoke(this);
+    }
+
+    /// <summary>True while the player is standing inside any junction zone.</summary>
+    public static bool PlayerInsideAny => _playersInside > 0;
+    private static int _playersInside;
+    private bool _playerInside;
+
+    void OnDestroy()
+    {
+        // A zone destroyed with the player inside (maze collapse) must not leave the counter stuck.
+        if (_playerInside) { _playerInside = false; _playersInside = Mathf.Max(0, _playersInside - 1); }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+
+        if (!_playerInside) { _playerInside = true; _playersInside++; }
 
         // Arm wrong path triggers
         foreach (var trigger in _wrongPathTriggers)
@@ -82,7 +107,7 @@ public class IntersectionZone : MonoBehaviour
 //         _textSpawner   = spawnerObj.GetComponent<TextPuzzleSpawner>();
 //     }
 
-//     // Used by the GDD page mechanic to know which ground-truth spec belongs
+//     // Used by the manual page mechanic to know which ground-truth spec belongs
 //     // to this intersection, so a page dropped one cell before it can carry
 //     // the matching PuzzleData.
 //     public PuzzleData GetAssignedPuzzleData()

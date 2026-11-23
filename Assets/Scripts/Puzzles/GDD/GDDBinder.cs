@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// Place this on a pickup prefab at the maze start cell (0,0). Picking it up
-/// unlocks the GDD book UI (see UI_script.ToggleBook) and kicks off the
+/// unlocks the manual UI (see UI_script.ToggleBook) and kicks off the
 /// "collect missing pages" objective via GDDManager.
 /// </summary>
 [RequireComponent(typeof(Collider))]

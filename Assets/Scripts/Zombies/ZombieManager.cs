@@ -1,0 +1,664 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum ZombiePageMode
+{
+    [Tooltip("The Zombie Behaviour Spec page lies on the floor between the start and the first junction.")]
+    FirstCorridor,
+    [Tooltip("The page is added to the book a few seconds after the player picks up the Binder.")]
+    StartInBinder
+}
+
+/// <summary>One side of a behaviour pair, e.g. "walk" with the Standard Walk clip.</summary>
+[System.Serializable]
+public class ZombieBehaviourSide
+{
+    [Tooltip("How this behaviour is written on the manual page, e.g. 'walk', 'drop kick', 'dance hip-hop'.")]
+    public string label = "walk";
+
+    [Tooltip("One or more clips that show this behaviour. A random one is used each time " +
+             "(e.g. several hip-hop dances under one 'dance hip-hop' label). Drag the clip from inside the FBX.")]
+    public AnimationClip[] clips;
+
+    [Tooltip("Movement pairs only: speed in units per second while this clip plays.")]
+    public float moveSpeed = 1.2f;
+
+    [Tooltip("Full-page transparent image with this behaviour's word in the MAY column (same size as the page template).")]
+    public Sprite mayImage;
+    [Tooltip("Full-page transparent image with this behaviour's word in the WON'T column (same size as the page template).")]
+    public Sprite wontImage;
+
+    public bool HasClips
+    {
+        get
+        {
+            if (clips == null) return false;
+            foreach (AnimationClip c in clips) if (c != null) return true;
+            return false;
+        }
+    }
+
+    public AnimationClip RandomClip()
+    {
+        if (clips == null) return null;
+        var valid = new List<AnimationClip>();
+        foreach (AnimationClip c in clips) if (c != null) valid.Add(c);
+        return valid.Count == 0 ? null : valid[Random.Range(0, valid.Count)];
+    }
+}
+
+/// <summary>Two behaviours of which exactly one is allowed this run (picked at random when the scene starts).</summary>
+[System.Serializable]
+public class ZombieBehaviourPair
+{
+    [Tooltip("Just a name for you, e.g. 'Movement', 'Fighting', 'Dance style'.")]
+    public string name = "Movement";
+
+    [Tooltip("Tick for pairs that are HOW the zombie moves along the corridor (walk / jog, strut / catwalk). " +
+             "Leave unticked for actions done standing still (punch / kick, jump / spin, dances).")]
+    public bool isMovement;
+
+    public ZombieBehaviourSide optionA = new ZombieBehaviourSide();
+    public ZombieBehaviourSide optionB = new ZombieBehaviourSide { label = "jog", moveSpeed = 2.5f };
+
+    [System.NonSerialized] public bool aIsAllowed;
+
+    public ZombieBehaviourSide Allowed   => aIsAllowed ? optionA : optionB;
+    public ZombieBehaviourSide Forbidden => aIsAllowed ? optionB : optionA;
+    public bool IsUsable => optionA != null && optionB != null && optionA.HasClips && optionB.HasClips;
+}
+
+/// <summary>
+/// A creature that should never be in this build (e.g. a dragon). Every one that spawns is a hallucination:
+/// flagging it is always correct. It just patrols its corridor stretch with its movement clip.
+/// </summary>
+[System.Serializable]
+public class AlwaysFakeMonster
+{
+    [Tooltip("What it is, e.g. 'dragons'. Used in messages and (optionally) on the rules page.")]
+    public string label = "dragons";
+    [Tooltip("The creature prefab, with an Animator (Humanoid or Generic) whose rig matches the clips below.")]
+    public GameObject prefab;
+    [Tooltip("Walk / crawl / fly-in-place clips made for THIS creature's rig. A random one is used per leg.")]
+    public AnimationClip[] moveClips;
+    public float moveSpeed = 1.5f;
+    [Tooltip("Optional pause pose at the end of each leg.")]
+    public AnimationClip idleClip;
+    public float scale = 1f;
+
+    [Tooltip("The manual page that says this creature doesn't belong (e.g. your 'no dragons' page). " +
+             "Monsters only spawn once the player holds it, and flags count as 'checked the book' when it was opened.")]
+    public PuzzleData sourcePage;
+    [Tooltip("If you have no page for it: add a 'NOT IN THIS BUILD: <label>' line to the Zombie Behaviour Spec page instead.")]
+    public bool addToRulesPage;
+
+    public bool IsUsable
+    {
+        get
+        {
+            if (prefab == null || moveClips == null) return false;
+            foreach (AnimationClip c in moveClips) if (c != null) return true;
+            return false;
+        }
+    }
+}
+
+/// <summary>
+/// Harmless zombies that wander the maze. Each run, one side of every behaviour pair is allowed and
+/// written on the "Zombie Behaviour Spec" manual page. Genuine zombies only do allowed things; hallucinated
+/// zombies do exactly one forbidden thing. The player flags them with the usual F prompt.
+///
+/// SETUP: put this on any scene object, assign the MazeGenerator, the zombie prefabs, the manual page
+/// prefab (the same one IntersectionDetector uses), the idle clip and the behaviour pairs.
+/// MazeGenerator calls ZombieManager.OnMazeBuilt() after every validated build.
+/// </summary>
+public class ZombieManager : MonoBehaviour
+{
+    [SerializeField] private MazeGenerator _mazeGenerator;
+
+    [Header("Zombies")]
+    [Tooltip("Zombie character prefabs (Humanoid rig, Animator with its avatar). One is picked at random per spawn.")]
+    [SerializeField] private GameObject[] _zombiePrefabs;
+    [SerializeField] private float _zombieScale = 1f;
+    [Tooltip("Neutral pose between actions (Idle-2).")]
+    [SerializeField] private AnimationClip _idleClip;
+    [Tooltip("Each pair: one side is allowed this run, the other forbidden. Pairs with a missing clip on either side are ignored.")]
+    [SerializeField] private List<ZombieBehaviourPair> _pairs = new List<ZombieBehaviourPair>();
+
+    [Header("manual page")]
+    [SerializeField] private ZombiePageMode _pageMode = ZombiePageMode.FirstCorridor;
+    [Tooltip("The same manual page pickup prefab IntersectionDetector uses.")]
+    [SerializeField] private GameObject _gddPagePrefab;
+    [SerializeField] private string _pageTitle = "ZOMBIE BEHAVIOUR SPEC";
+    [Tooltip("The empty Zombie Behaviours page (title + MAY / WON'T columns, no words). " +
+             "With it, the book shows your images instead of text: each pair's allowed side uses its May Image, " +
+             "its forbidden side its Wont Image.")]
+    [SerializeField] private Sprite _pageTemplate;
+    [Tooltip("Optional picture for the page in text mode (used only if the template or a word image is missing).")]
+    [SerializeField] private Sprite _pageArt;
+    [SerializeField] private string _allowedHeader = "<color=#5BE37D><b>ZOMBIES MAY:</b></color> ";
+    [SerializeField] private string _forbiddenHeader = "<color=#FF5C5C><b>ZOMBIES NEVER:</b></color> ";
+    [Tooltip("Start In Binder only: wait this long after the Binder pickup so its message is read first.")]
+    [SerializeField] private float _binderPageDelay = 4.5f;
+
+    [Header("Spawning")]
+    [Tooltip("Zombies appear once the player holds the page AND has finished this many junctions.")]
+    [SerializeField] private int _startAfterJunctions = 1;
+    [Range(0f, 1f)] [SerializeField] private float _fakeChance = 0.5f;
+    [Tooltip("How many not-yet-seen zombies to keep waiting ahead of the player on the route.")]
+    [SerializeField] private int _zombiesAhead = 2;
+    [Tooltip("Never more zombies alive than this (Chromebook performance).")]
+    [SerializeField] private int _maxAlive = 3;
+    [Tooltip("Steps along the route to the exit, counted from the player's cell.")]
+    [SerializeField] private int _minStep = 5;
+    [SerializeField] private int _maxStep = 14;
+    [Tooltip("Length (in cells) of the corridor stretch a zombie patrols. Never includes a junction.")]
+    [SerializeField] private int _patrolCells = 3;
+    [Tooltip("Zombies the player has already met are removed once they are this many cells away.")]
+    [SerializeField] private float _despawnCellsAway = 6f;
+    [SerializeField] private float _checkInterval = 1.5f;
+    [Tooltip("Height of the floor relative to the cell's position.")]
+    [SerializeField] private float _floorOffset = 0f;
+
+    [Header("Behaviour")]
+    [Tooltip("Action zombies stop and show their featured action when the player is this close.")]
+    [SerializeField] private float _showRange = 7f;
+    [Tooltip("Long clips (dances) are cut after this many seconds.")]
+    [SerializeField] private float _maxActionSeconds = 4f;
+    [SerializeField] private bool _facePlayerWhenShowing = true;
+
+    [Header("Always-fake monsters (dragons...)")]
+    [Tooltip("Creatures that never belong in the build. Every one is a hallucination.")]
+    [SerializeField] private List<AlwaysFakeMonster> _monsters = new List<AlwaysFakeMonster>();
+    [Tooltip("Chance that a spawn is a monster instead of a zombie (when both are available).")]
+    [Range(0f, 1f)] [SerializeField] private float _monsterChance = 0.2f;
+    [SerializeField] private string _monsterHeader = "<color=#FF5C5C><b>NOT IN THIS BUILD:</b></color> ";
+
+    [Header("Debug")]
+    [SerializeField] private bool _debugLogs = true;
+
+    private static ZombieManager _instance;
+
+    private ZombieRulesPageData _page;
+    private GameObject _pageObject;
+    private readonly List<ZombieBehaviourPair> _usable = new List<ZombieBehaviourPair>();
+    private readonly List<ZombieHallucination> _zombies = new List<ZombieHallucination>();
+    private int _junctionsFinished;
+    private float _nextCheck;
+    private bool _subscribedToGDD;
+    private GameObject _player;
+
+    /// <summary>The page holding this run's rules (for other scripts / debugging).</summary>
+    public static PuzzleData RulesPage => _instance != null ? _instance._page : null;
+
+    // ---------- lifecycle ----------
+
+    void Awake()
+    {
+        _instance = this;
+        RollRules();
+        BuildPage();
+    }
+
+    void OnEnable()  { IntersectionZone.PlayerLeft += HandleJunctionFinished; }
+    void OnDisable() { IntersectionZone.PlayerLeft -= HandleJunctionFinished; }
+
+    void Start() { EnsureGDDSubscription(); }
+
+    void OnDestroy()
+    {
+        if (_instance == this) _instance = null;
+        if (_subscribedToGDD && GDDManager.Instance != null)
+        {
+            GDDManager.Instance.OnPageCollected -= HandlePageCollected;
+            GDDManager.Instance.OnBinderCollected -= HandleBinderCollected;
+        }
+        if (_page != null) Destroy(_page);
+    }
+
+    private void EnsureGDDSubscription()
+    {
+        if (_subscribedToGDD || GDDManager.Instance == null) return;
+        GDDManager.Instance.OnPageCollected += HandlePageCollected;
+        GDDManager.Instance.OnBinderCollected += HandleBinderCollected;
+        _subscribedToGDD = true;
+    }
+
+    private void HandleJunctionFinished(IntersectionZone zone) => _junctionsFinished++;
+
+    // ---------- rules + page ----------
+
+    private void RollRules()
+    {
+        _usable.Clear();
+        foreach (ZombieBehaviourPair pair in _pairs)
+        {
+            if (pair == null) continue;
+            if (!pair.IsUsable)
+            {
+                Log($"pair '{pair.name}' ignored: one of its sides has no clip.");
+                continue;
+            }
+            pair.aIsAllowed = Random.value < 0.5f;
+            _usable.Add(pair);
+        }
+
+        if (_usable.Count == 0)
+            Debug.LogWarning("ZombieManager: no usable behaviour pairs (each pair needs at least one clip on BOTH sides). No zombies will spawn.", this);
+    }
+
+    private void BuildPage()
+    {
+        _page = ScriptableObject.CreateInstance<ZombieRulesPageData>();
+        _page.name = _pageTitle;
+        _page.pageTitle = _pageTitle;
+        _page.pageArt = _pageArt;
+
+        var allowed = new List<string>();
+        var forbidden = new List<string>();
+        foreach (ZombieBehaviourPair pair in _usable)
+        {
+            allowed.Add(pair.Allowed.label);
+            forbidden.Add(pair.Forbidden.label);
+        }
+
+        _page.groundTruthSummary =
+            _allowedHeader + string.Join(", ", allowed) + "\n" +
+            _forbiddenHeader + string.Join(", ", forbidden);
+
+        // Image mode: template + one word image per side, if every needed image is assigned.
+        if (_pageTemplate != null)
+        {
+            var missing = new List<string>();
+            foreach (ZombieBehaviourPair pair in _usable)
+            {
+                if (pair.Allowed.mayImage == null)    missing.Add(pair.Allowed.label + " (May Image)");
+                if (pair.Forbidden.wontImage == null) missing.Add(pair.Forbidden.label + " (Wont Image)");
+            }
+
+            if (missing.Count == 0)
+            {
+                _page.pageArt = _pageTemplate;
+                foreach (ZombieBehaviourPair pair in _usable)
+                {
+                    _page.Overlays.Add(pair.Allowed.mayImage);
+                    _page.Overlays.Add(pair.Forbidden.wontImage);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("ZombieManager: the rules page falls back to text because these word images are missing: " +
+                                 string.Join(", ", missing), this);
+            }
+        }
+
+        var banned = new List<string>();
+        foreach (AlwaysFakeMonster m in _monsters)
+            if (m != null && m.IsUsable && m.addToRulesPage && m.sourcePage == null) banned.Add(m.label);
+        if (banned.Count > 0)
+            _page.groundTruthSummary += "\n" + _monsterHeader + string.Join(", ", banned);
+
+        Log("this run's rules -> MAY: " + string.Join(", ", allowed) + " | NEVER: " + string.Join(", ", forbidden));
+    }
+
+    private void HandleBinderCollected()
+    {
+        if (_pageMode == ZombiePageMode.StartInBinder) StartCoroutine(GivePageAfterDelay());
+    }
+
+    private IEnumerator GivePageAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(_binderPageDelay);
+        if (GDDManager.Instance != null) GDDManager.Instance.CollectPage(_page);
+    }
+
+    private void HandlePageCollected(PuzzleData data)
+    {
+        if (data != _page) return;
+        if (_pageObject != null) Destroy(_pageObject);
+        _pageObject = null;
+        Log("rules page collected.");
+    }
+
+    private bool PageHeld => GDDManager.Instance != null && GDDManager.Instance.HasCollected(_page);
+
+    // ---------- maze builds ----------
+
+    /// <summary>Called by MazeGenerator after every validated build (first maze and rebuilds).</summary>
+    public static void OnMazeBuilt()
+    {
+        if (_instance != null) _instance.HandleMazeBuilt();
+    }
+
+    private void HandleMazeBuilt()
+    {
+        EnsureGDDSubscription();
+
+        // Anything from the previous maze is gone (ClearAll already removed the zombies' items).
+        foreach (ZombieHallucination z in _zombies)
+            if (z != null) Destroy(z.gameObject);
+        _zombies.Clear();
+
+        if (_pageObject != null) Destroy(_pageObject);
+        _pageObject = null;
+
+        if (_pageMode == ZombiePageMode.FirstCorridor && !PageHeld)
+            SpawnRulesPage();
+    }
+
+    // The page goes on a random corridor cell between the start and the first junction.
+    private void SpawnRulesPage()
+    {
+        if (_gddPagePrefab == null)
+        {
+            Debug.LogWarning("ZombieManager: 'Gdd Page Prefab' is not assigned, so the rules page can't be placed in the maze.", this);
+            return;
+        }
+
+        MazeCell[,] grid = _mazeGenerator != null ? _mazeGenerator.GetMazeGrid() : null;
+        if (grid == null) return;
+
+        int w = grid.GetLength(0), d = grid.GetLength(1);
+        List<MazeCell> route = Route(grid[0, 0], w * d);
+
+        int firstJunction = -1;
+        for (int i = 1; i < route.Count; i++)
+            if (IsJunction(route[i], w, d)) { firstJunction = i; break; }
+
+        int last = firstJunction > 0 ? firstJunction - 1 : Mathf.Min(route.Count - 1, 6);
+        var candidates = new List<MazeCell>();
+        for (int i = 2; i <= last; i++) candidates.Add(route[i]);
+        if (candidates.Count == 0 && last >= 1) candidates.Add(route[1]);
+
+        // Prefer a cell that doesn't already hold a junction's manual page, so the two never overlap.
+        var free = candidates.FindAll(c => !HasPageInCell(c));
+        if (free.Count > 0) candidates = free;
+
+        MazeCell cell = candidates.Count > 0 ? candidates[Random.Range(0, candidates.Count)] : grid[0, 0];
+
+        // Always the centre of the cell: an offset could push it into a wall or a closed-off corner.
+        Vector3 pos = cell.transform.position + Vector3.up * 0.15f;
+
+        _pageObject = Instantiate(_gddPagePrefab, pos, Quaternion.identity);
+        _pageObject.name = "GDDPage (Zombie rules)";
+        GDDPage page = _pageObject.GetComponent<GDDPage>();
+        if (page != null) page.Setup(_page);
+        else Debug.LogWarning("ZombieManager: the manual page prefab has no GDDPage component.", this);
+
+        Log($"rules page placed at cell [{cell.GridX},{cell.GridZ}].");
+    }
+
+    // ---------- spawning ----------
+
+    void Update()
+    {
+        if (Time.time < _nextCheck) return;
+        _nextCheck = Time.time + _checkInterval;
+
+        _zombies.RemoveAll(z => z == null);
+        DespawnFarZombies();
+
+        bool zombiesReady = _usable.Count > 0 && _zombiePrefabs != null && _zombiePrefabs.Length > 0 && PageHeld;
+        if (!zombiesReady && ReadyMonsters().Count == 0) return;
+        if (_junctionsFinished < _startAfterJunctions) return;
+        if (_mazeGenerator == null || _mazeGenerator.GetMazeGrid() == null) return;
+        if (TimerManager.Instance != null && !TimerManager.Instance.IsRunning) return;
+        if (_zombies.Count >= _maxAlive) return;
+
+        int waiting = 0;
+        foreach (ZombieHallucination z in _zombies)
+        {
+            AmbientHallucination item = z.GetComponent<AmbientHallucination>();
+            if (item != null && !item.Encountered) waiting++;
+        }
+        if (waiting >= _zombiesAhead) return;
+
+        TrySpawnZombie();
+    }
+
+    // Zombies the player has already met and walked away from are removed to keep the count low.
+    private void DespawnFarZombies()
+    {
+        if (_player == null) _player = GameObject.FindWithTag("Player");
+        if (_player == null || _mazeGenerator == null) return;
+
+        float limit = _despawnCellsAway * _mazeGenerator.CellSize;
+        for (int i = _zombies.Count - 1; i >= 0; i--)
+        {
+            ZombieHallucination z = _zombies[i];
+            AmbientHallucination item = z.GetComponent<AmbientHallucination>();
+            if (item == null || !item.Encountered) continue;
+
+            Vector3 delta = z.transform.position - _player.transform.position;
+            delta.y = 0f;
+            if (delta.magnitude > limit)
+            {
+                Destroy(z.gameObject);
+                _zombies.RemoveAt(i);
+            }
+        }
+    }
+
+    private void TrySpawnZombie()
+    {
+        if (_player == null) _player = GameObject.FindWithTag("Player");
+        if (_player == null) return;
+
+        MazeCell[,] grid = _mazeGenerator.GetMazeGrid();
+        int w = grid.GetLength(0), d = grid.GetLength(1);
+
+        MazeCell from = NearestCell(grid, _player.transform.position);
+        if (from == null) return;
+
+        List<MazeCell> route = Route(from, _maxStep + _patrolCells);
+
+        // Every stretch of 2+ consecutive plain corridor cells that starts between min and max step.
+        var starts = new List<int>();
+        var lengths = new List<int>();
+        for (int i = _minStep; i <= _maxStep && i < route.Count; i++)
+        {
+            int len = 0;
+            while (i + len < route.Count && len < Mathf.Max(2, _patrolCells) && IsFreeCorridor(route[i + len], w, d)) len++;
+            if (len >= 2) { starts.Add(i); lengths.Add(len); }
+        }
+        if (starts.Count == 0) { Log("no free corridor stretch ahead on the route right now."); return; }
+
+        int pick = Random.Range(0, starts.Count);
+        var waypoints = new List<Vector3>();
+        for (int i = 0; i < lengths[pick]; i++)
+        {
+            Vector3 p = route[starts[pick] + i].transform.position;
+            p.y += _floorOffset;
+            waypoints.Add(p);
+        }
+
+        // Sometimes (or always, if zombies aren't unlocked yet) a monster instead of a zombie.
+        List<AlwaysFakeMonster> monsters = ReadyMonsters();
+        bool zombiesReady = _usable.Count > 0 && _zombiePrefabs != null && _zombiePrefabs.Length > 0 && PageHeld;
+        if (monsters.Count > 0 && (!zombiesReady || Random.value < _monsterChance))
+        {
+            SpawnMonster(monsters[Random.Range(0, monsters.Count)], waypoints, route[starts[pick]]);
+            return;
+        }
+        if (!zombiesReady) return;
+
+        // What this zombie does.
+        bool fake = Random.value < _fakeChance;
+        ZombieBehaviourPair featuredPair = _usable[Random.Range(0, _usable.Count)];
+        ZombieBehaviourSide featured = fake ? featuredPair.Forbidden : featuredPair.Allowed;
+
+        var movePairs = _usable.FindAll(p => p.isMovement);
+        ZombieBehaviourSide move;
+        if (featuredPair.isMovement) move = featured;
+        else move = movePairs.Count > 0 ? movePairs[Random.Range(0, movePairs.Count)].Allowed : null;
+
+        var extras = new List<ZombieBehaviourSide>();
+        foreach (ZombieBehaviourPair p in _usable)
+            if (p != featuredPair && !p.isMovement) extras.Add(p.Allowed);
+
+        string description = $"{(fake ? "FAKE" : "REAL")}, featured: {featured.label} ({(fake ? "forbidden" : "allowed")})" +
+                             (move != null && !featuredPair.isMovement ? $", moves: {move.label}" : "");
+
+        // Spawn.
+        GameObject prefab = _zombiePrefabs[Random.Range(0, _zombiePrefabs.Length)];
+        if (prefab == null) return;
+
+        Vector3 look = waypoints[1] - waypoints[0];
+        look.y = 0f;
+        GameObject obj = Instantiate(prefab, waypoints[0], look.sqrMagnitude > 0.001f ? Quaternion.LookRotation(look) : Quaternion.identity);
+        obj.transform.localScale *= _zombieScale;
+        obj.name = $"Zombie ({description})";
+
+        ZombieHallucination zombie = obj.AddComponent<ZombieHallucination>();
+        zombie.Setup(waypoints, move, featuredPair.isMovement, featuredPair.isMovement ? null : featured, extras,
+                     _idleClip, _showRange, _maxActionSeconds, _facePlayerWhenShowing, description);
+
+        // Same flagging system as every other hallucination. The page is its Source, so the
+        // "did they check the book first?" stat works too.
+        AmbientHallucination.Attach(obj, fake, _page.pageTitle, false, _page);
+
+        _zombies.Add(zombie);
+        Log($"spawned zombie at cell [{route[starts[pick]].GridX},{route[starts[pick]].GridZ}]: {description}", obj);
+    }
+
+    // True if a manual page pickup (e.g. the next junction's page) already lies in this cell.
+    private bool HasPageInCell(MazeCell cell)
+    {
+        float halfW = _mazeGenerator.CellWidth * 0.5f, halfD = _mazeGenerator.CellDepth * 0.5f;
+        foreach (GDDPage page in FindObjectsByType<GDDPage>(FindObjectsSortMode.None))
+        {
+            if (page == null || page.gameObject == _pageObject) continue;
+            Vector3 delta = page.transform.position - cell.transform.position;
+            if (Mathf.Abs(delta.x) < halfW && Mathf.Abs(delta.z) < halfD) return true;
+        }
+        return false;
+    }
+
+    // Monsters whose page the player holds (or, without their own page, the rules page / at least the Binder).
+    private List<AlwaysFakeMonster> ReadyMonsters()
+    {
+        var ready = new List<AlwaysFakeMonster>();
+        if (GDDManager.Instance == null) return ready;
+        foreach (AlwaysFakeMonster m in _monsters)
+        {
+            if (m == null || !m.IsUsable) continue;
+            bool known = m.sourcePage != null ? GDDManager.Instance.HasCollected(m.sourcePage)
+                       : m.addToRulesPage    ? PageHeld
+                       : GDDManager.Instance.HasBinder;
+            if (known) ready.Add(m);
+        }
+        return ready;
+    }
+
+    private void SpawnMonster(AlwaysFakeMonster monster, List<Vector3> waypoints, MazeCell cell)
+    {
+        Vector3 look = waypoints[1] - waypoints[0];
+        look.y = 0f;
+        GameObject obj = Instantiate(monster.prefab, waypoints[0], look.sqrMagnitude > 0.001f ? Quaternion.LookRotation(look) : Quaternion.identity);
+        obj.transform.localScale *= monster.scale;
+        obj.name = $"Monster ({monster.label}, always FAKE)";
+
+        var move = new ZombieBehaviourSide { label = monster.label, clips = monster.moveClips, moveSpeed = monster.moveSpeed };
+        ZombieHallucination creature = obj.AddComponent<ZombieHallucination>();
+        creature.Setup(waypoints, move, true, null, null, monster.idleClip, _showRange, _maxActionSeconds, false,
+                       $"FAKE monster: {monster.label}");
+
+        PuzzleData source = monster.sourcePage != null ? monster.sourcePage : monster.addToRulesPage ? _page : null;
+        string title = source != null ? source.pageTitle : monster.label;
+        AmbientHallucination item = AmbientHallucination.Attach(obj, true, title, false, source);
+        if (source == null) item.Obvious = true; // no page to check: judged by gut feeling, like the wrong-game assets
+
+        _zombies.Add(creature);
+        Log($"spawned monster '{monster.label}' at cell [{cell.GridX},{cell.GridZ}] (always fake)", obj);
+    }
+
+    private bool IsFreeCorridor(MazeCell cell, int w, int d)
+    {
+        if (cell.GridX == 0 && cell.GridZ == 0) return false;
+        if (IsJunction(cell, w, d)) return false;
+        if (cell.GetComponentInChildren<ExitPortal>() != null) return false;
+
+        float minDist = _mazeGenerator.CellSize * 1.5f;
+        foreach (ZombieHallucination z in _zombies)
+        {
+            if (z == null) continue;
+            Vector3 delta = z.transform.position - cell.transform.position;
+            delta.y = 0f;
+            if (delta.magnitude < minDist) return false;
+        }
+        return true;
+    }
+
+    // ---------- maze helpers ----------
+
+    // The route toward the exit, as a player who never takes a wrong turn would walk it
+    // (same rule as pages, puzzles and ambient items).
+    private List<MazeCell> Route(MazeCell start, int maxSteps)
+    {
+        var route = new List<MazeCell>();
+        MazeCell[,] grid = _mazeGenerator.GetMazeGrid();
+        int[,] dist = _mazeGenerator.GetDistanceFromExit();
+        if (grid == null || dist == null || start == null) return route;
+
+        int w = grid.GetLength(0), d = grid.GetLength(1);
+        MazeCell current = start;
+        route.Add(current);
+
+        for (int step = 0; step < maxSteps; step++)
+        {
+            int currentDist = dist[current.GridX, current.GridZ];
+            if (currentDist <= 0) break;
+
+            MazeCell next = null;
+            if (IntersectionDetector.Instance != null
+                && IntersectionDetector.Instance.NextStepTowardExit(new Vector2Int(current.GridX, current.GridZ), out Vector2Int n))
+            {
+                next = grid[n.x, n.y];
+            }
+            else
+            {
+                foreach (Vector2Int c in OpenNeighbors(current, w, d))
+                    if (dist[c.x, c.y] == currentDist - 1) { next = grid[c.x, c.y]; break; }
+            }
+
+            if (next == null) break;
+            route.Add(next);
+            current = next;
+        }
+        return route;
+    }
+
+    private static bool IsJunction(MazeCell cell, int w, int d) => OpenNeighbors(cell, w, d).Count >= 3;
+
+    private static List<Vector2Int> OpenNeighbors(MazeCell cell, int w, int d)
+    {
+        var result = new List<Vector2Int>(4);
+        int x = cell.GridX, z = cell.GridZ;
+        if (x + 1 < w && !cell.HasRightWall()) result.Add(new Vector2Int(x + 1, z));
+        if (x - 1 >= 0 && !cell.HasLeftWall()) result.Add(new Vector2Int(x - 1, z));
+        if (z + 1 < d && !cell.HasFrontWall()) result.Add(new Vector2Int(x, z + 1));
+        if (z - 1 >= 0 && !cell.HasBackWall()) result.Add(new Vector2Int(x, z - 1));
+        return result;
+    }
+
+    private static MazeCell NearestCell(MazeCell[,] grid, Vector3 worldPos)
+    {
+        MazeCell best = null;
+        float bestSqr = float.MaxValue;
+        foreach (MazeCell c in grid)
+        {
+            if (c == null) continue;
+            Vector3 delta = c.transform.position - worldPos;
+            delta.y = 0f;
+            float sqr = delta.sqrMagnitude;
+            if (sqr < bestSqr) { bestSqr = sqr; best = c; }
+        }
+        return best;
+    }
+
+    private void Log(string message, Object context = null)
+    {
+        if (_debugLogs) Debug.Log($"[Zombies] {message}", context);
+    }
+}

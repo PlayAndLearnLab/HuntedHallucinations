@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 /// <summary>
-/// Central singleton for the GDD Binder / Page mechanic.
+/// Central singleton for the Manual Binder / Page mechanic.
 ///
 /// - Picking up the Binder (at spawn, cell 0,0) sets HasBinder and unlocks the book UI.
 /// - Picking up a Page sets CurrentPage to that page's PuzzleData, which is always the
@@ -17,6 +17,11 @@ public class GDDManager : MonoBehaviour
     public static GDDManager Instance { get; private set; }
 
     public bool HasBinder { get; private set; }
+
+    [Tooltip("Shown instead of the usual page message when the player picks up their first page " +
+             "without having collected the Binder, so they know the book (I) is now available.")]
+    [TextArea]
+    [SerializeField] private string _loosePageMessage = "You found a loose design page \u2014 press I to read it.";
 
     private readonly List<PuzzleData> _collectedPages = new List<PuzzleData>();
 
@@ -41,7 +46,7 @@ public class GDDManager : MonoBehaviour
         if (HasBinder) return;
         HasBinder = true;
         OnBinderCollected?.Invoke();
-        Log("You found the Game Design Document! Collect the missing design pages to help you navigate the maze.");
+        Log("You found the Manual! Collect the missing design pages to help you navigate the maze.");
     }
 
     public void CollectPage(PuzzleData data)
@@ -53,11 +58,22 @@ public class GDDManager : MonoBehaviour
             return;
         }
 
+        bool firstLoosePage = !HasBinder && _collectedPages.Count == 0;
+
         _collectedPages.Add(data);
         CurrentPage = data;
         OnPageCollected?.Invoke(data);
+
+        // Player skipped the Binder: tell them the book is usable now (this replaces the normal message,
+        // since a new GDDMessageUI message overrides the one currently showing).
+        if (firstLoosePage && !string.IsNullOrEmpty(_loosePageMessage))
+        {
+            Log(_loosePageMessage);
+            return;
+        }
+
         Log(string.IsNullOrEmpty(data.pageTitle)
-            ? "Design page recovered. Check your GDD before the next junction."
+            ? "Design page recovered. Check your manual before the next junction."
             : $"Design page recovered: {data.pageTitle}");
     }
 
@@ -71,7 +87,7 @@ public class GDDManager : MonoBehaviour
         if (GDDMessageUI.Instance != null)
             GDDMessageUI.Instance.ShowMessage(message);
         else
-            Debug.Log($"[GDD] {message}");
+            Debug.Log($"[Manual] {message}");
     }
 }
 
@@ -81,7 +97,7 @@ public class GDDManager : MonoBehaviour
 // using System.Collections.Generic;
 
 // /// <summary>
-// /// Central singleton for the GDD Binder / Page mechanic.
+// /// Central singleton for the Manual Binder / Page mechanic.
 // ///
 // /// - Picking up the Binder (at spawn, cell 0,0) sets HasBinder and unlocks the book UI.
 // /// - Picking up a Page sets CurrentPage to that page's PuzzleData, which is always the
@@ -119,7 +135,7 @@ public class GDDManager : MonoBehaviour
 //         if (HasBinder) return;
 //         HasBinder = true;
 //         OnBinderCollected?.Invoke();
-//         Log("You found the Game Design Document! Collect the missing design pages to help you navigate the maze.");
+//         Log("You found the Manual! Collect the missing design pages to help you navigate the maze.");
 //     }
  
 
@@ -136,7 +152,7 @@ public class GDDManager : MonoBehaviour
 //         CurrentPage = data;
 //         OnPageCollected?.Invoke(data);
 //         Log(string.IsNullOrEmpty(data.pageTitle)
-//             ? "Design page recovered. Check your GDD before the next junction."
+//             ? "Design page recovered. Check your manual before the next junction."
 //             : $"Design page recovered: {data.pageTitle}");
 //     }
 
@@ -150,7 +166,7 @@ public class GDDManager : MonoBehaviour
 //         if (PuzzleUI.Instance != null)
 //             PuzzleUI.Instance.ShowPuzzlePopup(message);
 //         else
-//             Debug.Log($"[GDD] {message}");
+//             Debug.Log($"[Manual] {message}");
 //     }
 // }
 

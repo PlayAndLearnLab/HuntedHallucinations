@@ -86,6 +86,11 @@ public class IntroSlideshowManager : MonoBehaviour
 
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             RequestAdvance();
+
+        if (Keyboard.current != null && Keyboard.current.leftArrowKey.wasPressedThisFrame)
+            ReturnToPreviousPage();
+        if (Keyboard.current != null && Keyboard.current.rightArrowKey.wasPressedThisFrame)
+            RequestAdvance();
     }
 
     public void SkipIntro()

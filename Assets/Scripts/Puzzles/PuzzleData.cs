@@ -8,8 +8,8 @@ public abstract class PuzzleData : ScriptableObject
     public PuzzleDifficulty difficulty;
     public PuzzleType       puzzleType;
 
-    [Header("GDD Page (Spot-the-Difference Reference)")]
-    [Tooltip("Short label shown at the top of the GDD page, e.g. 'ASSET SPEC 04-B'.")]
+    [Header("Manual Page (Spot-the-Difference Reference)")]
+    [Tooltip("Short label shown at the top of the manual page, e.g. 'ASSET SPEC 04-B'.")]
     public string pageTitle;
  
     [Tooltip("The ground-truth reference image the player compares against the hallucinated in-world asset or text.")]

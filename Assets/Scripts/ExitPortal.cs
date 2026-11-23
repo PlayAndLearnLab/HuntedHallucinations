@@ -64,6 +64,12 @@ public class ExitPortal : MonoBehaviour
             Debug.LogException(e);
         }
 
+        // The final punch: reaching the portal K.O.s the evil AI (bar to 100%).
+        if (AuditScoreManager.Instance != null) AuditScoreManager.Instance.Knockout();
+
+        // Time, grade and personal best for the end screen. After Knockout() so the grade uses the bar's value before the K.O.
+        RunResult.Finish(true);
+
         // Freeze the player during the flash.
         PlayerController pc = player.GetComponentInParent<PlayerController>();
         if (pc != null) pc.ToggleMovement(false);
