@@ -1184,6 +1184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GDDManager
   _loosePageMessage: "You found a loose design page \u2014 press I to read it."
+  _pagePickupClip: {fileID: 8300000, guid: 210e0ad910dbd47d49212c5d1e48113e, type: 3}
+  _pagePickupVolume: 1
 --- !u!114 &330585552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,6 +1252,34 @@ MonoBehaviour:
     m_RotationOrder: 4
   _stepCount: 5
   _blendTime: 1
+  _useSenseMakingBar: 1
+  _barEffectStartsBelow: 0.5
+  _barFullStrengthAt: 0.1
+  _barCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _barMaxStrength: 1
   _maxBlur: 0.22
   _clearRadiusStart: 0.55
   _clearRadiusEnd: 0.12
@@ -2032,6 +2062,12 @@ MonoBehaviour:
 
     Grows most when you check your
     manual before flagging. The AI drains it.'
+  _visionText: '<b>The AI is clouding your vision.</b>
+
+    Check your manual and
+    flag its fakes to see clearly again.'
+  _visionAiLine: Getting hard to see?
+  _visionTriggerStrength: 0.15
   _hintDuration: 8
   _gapBetweenHints: 0.6
   _triggerRange: 3

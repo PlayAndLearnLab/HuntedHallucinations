@@ -23,6 +23,11 @@ public class GDDManager : MonoBehaviour
     [TextArea]
     [SerializeField] private string _loosePageMessage = "You found a loose design page \u2014 press I to read it.";
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip _pagePickupClip;
+    [SerializeField, Range(0f, 1f)] private float _pagePickupVolume = 1f;
+    private AudioSource _audio;
+
     private readonly List<PuzzleData> _collectedPages = new List<PuzzleData>();
 
     /// <summary>All pages collected so far, in pickup order — what GDDBookRenderer flips through.</summary>
@@ -35,10 +40,17 @@ public class GDDManager : MonoBehaviour
     public event Action OnBinderCollected;
     public event Action<PuzzleData> OnPageCollected;
 
+    
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+
+        _audio = GetComponent<AudioSource>();
+        if (_audio == null) _audio = gameObject.AddComponent<AudioSource>();
+        _audio.playOnAwake = false;
+        _audio.spatialBlend = 0f; // 2D, so it's always clearly audible
     }
 
     public void CollectBinder()
@@ -63,6 +75,9 @@ public class GDDManager : MonoBehaviour
         _collectedPages.Add(data);
         CurrentPage = data;
         OnPageCollected?.Invoke(data);
+
+        if (_pagePickupClip != null)
+            _audio.PlayOneShot(_pagePickupClip, _pagePickupVolume);
 
         // Player skipped the Binder: tell them the book is usable now (this replaces the normal message,
         // since a new GDDMessageUI message overrides the one currently showing).
